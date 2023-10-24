@@ -6,47 +6,43 @@
     <title>Document</title>
 </head>
 <body>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-    <p>Pariatur incidunt dignissimos minima hic provident animi, reiciendis enim labore consequuntur officia error repellat autem doloremque a temporibus ex odio quaerat. Molestiae.</p>
+    <div id="app" class="wrapper">
+        <header id="mainHeader">
+            <img src="zebra.jpg" alt="Zebra" width="100%">
+        <header>
 
-    <img src="zebra.jpg" width="100%" alt="">
-    <i>Kursiv</i>
-    <em>Kursiv (sinngemäß)</em>
-    <b>Fett</b>
-    <strong>Strong</strong>
+        <main>
+            <!-- Content Elemente werden in Sektionen unterteilt -->
 
-    <h1>Hauptüberschrift</h1>
+            <!--  Content Element BEGIN -->
+            <section>
+                <div style="float:left;">
+                    <h2 style="float:left;">Headline des Content Elements</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, beatae?</p>
+                </div>
+                <img style="max-width:100%;" class="responsive" src="city.jpg" alt="content Element 1 Bild" width="300px" height="auto">
+                
 
-    <ul>
-        <li>List Item 1</li>
-        <li>List Item 2</li>
-        <li>List Item 3</li>
-        <li>List Item 4</li>
-        <li>List Item 5</li>
-            <ul>
-                <li>
-                    Unterelement 1
-                </li>
-            </ul>
-        </li>
-    </ul>
+            </section>
+            <!--  Content Element END -->
 
-    <ol>
-        <li>Sortiertes List Item 2&copy;</li>
-        <li>Sortiertes List Item 2&reg;</li>
-        <li>Sortiertes List Item 2&#128264;</li>
-        <li>Sortiertes List Item 2</li>
-        <li>Sortiertes List Item 2</li>
-        <li>Sortiertes List Item 2</li>
-        <li>Sortiertes List Item 2</li>
-        <li>Sortiertes List Item 2</li>
-        <li>Sortiertes List Item 1</li>
-    </ol>
+            <div style="clear:both;"></div>
 
-    <dl>
-        <dt>Coffee</dt>
-        <dd>black hot drink</dd>
-    </dl>
+        </main>
 
+        <footer>
+            FOOTER
+            <div class="inner-wrapper">
+                <ul>
+                    <!-- a als Anchor Link innerhalb des selben Dokuments -->
+                    <li><a href="#mainHeader">Impressum</a></li>
+                    <li><a href="#">AGB</a></li>
+                    <li><a href="https://www.amazon.de/gp/help/customer/display.html?nodeId=201909010&ref_=footer_privacy">Datenschutz &amp; Cookies</a></li>
+                    <li><a href="#">Presse &amp; Download</a></li>
+                    <li><a href="jobs/karriere.html">Jobs &amp; Karriere</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
