@@ -1,0 +1,39 @@
+.roter-text {
+    color: red;
+}
+
+.blauer-hintergrund {
+    background-color: lightskyblue;
+}
+
+#headline1 {
+    text-decoration: line-through;
+}
+
+#headline2 {
+    letter-spacing: 0.3em;
+}
+
+body {
+    background-color: lightgray;
+    margin: 40px;
+}
+
+#list-element-1 {
+    border-left: 50px solid pink;
+}
+
+.list-element {
+    border-left: 3px solid blue;
+}
+
+li {
+    padding: 5px;
+    border-left: 10px solid green;
+}
+
+@media (min-width: 800px) {
+    body {
+        background: orange;
+    }
+}

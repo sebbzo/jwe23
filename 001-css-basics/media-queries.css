@@ -1,0 +1,28 @@
+.article-1 {
+    background: #ccc5b9;
+    color: black;
+    border-radius: 20px;
+}
+
+.article-2 {
+    background: #403d39;
+    color: white;
+    border-radius: 20px;
+}
+
+.article-3 {
+    background: #eb5e28;
+    color: black;
+    border-radius: 20px;
+}
+
+.news-posts article {
+    padding-left: 20px;
+    padding: 20px;
+    margin: 20px;
+    width: 100%;
+}
+
+section {
+    display: flex;
+}

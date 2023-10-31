@@ -1,0 +1,28 @@
+.wrapper {
+    background-color: #ccc5b9;
+}
+
+.default {
+    background-color: #eb5e28;
+    border: none;
+    padding: 10px;
+}
+
+.outline {
+    border: 2px solid #eb5e28;
+    background-color: transparent;
+}
+
+#cta {
+    display: block;
+    width: 150px;
+    height: 150px;
+    border: none;
+    background-color: #eb5e28;
+    color: white;
+    border-radius: 50%;
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 1);
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
