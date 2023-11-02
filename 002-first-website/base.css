@@ -1,0 +1,126 @@
+@font-face {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: normal;
+    src: url("fonts/Lato-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: bold;
+    src: url("fonts/Lato-Bold.ttf");
+}
+
+html {
+    font-family: "Lato";
+}
+
+html * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+h1 {
+    margin-bottom: 0;
+    margin-left: 25px;
+    margin-right: 25px;
+    z-index: 10;
+}
+
+#subtitle {
+    font-size: 25px;
+    margin-top: 0;
+    margin-left: 25px;
+    margin-right: 25px;
+    z-index: 10;
+}
+
+#main-header {
+    background-image: url(img/woman.jpg);
+    overflow: hidden;
+
+    background-size: auto 400%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    height: 500px;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    position: relative;
+    z-index: 0;
+}
+
+#main-header::before {
+    content: "";
+    background: rgba(255, 255, 255, 0.58);
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    width: 100%;
+
+    z-index: 10;
+    position: absolute;
+    top: 40px;
+
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+/* Andere Lösung */
+
+/* #main-header {
+    background-image: url(img/woman.jpg);
+    overflow: hidden;
+
+    background-size: auto 400%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    height: 500px;
+
+    position: relative;
+}
+
+#main-header::before {
+    content: "";
+    background: rgba(255, 255, 255, 0.58);
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#main-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    width: 100%;
+    z-index: 10;
+    margin-top: 40px;
+    position: relative;
+}
+
+#header-text {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+} */
