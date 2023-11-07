@@ -49,3 +49,11 @@ button.cta {
     font-size: 18px;
     border: none;
 }
+
+@media (min-width: 768px) {
+    /* Viewport größer/gleich 768px */
+}
+
+@media (min-width: 1200px) {
+    /* Viewport größer/gleich 1200px */
+}
