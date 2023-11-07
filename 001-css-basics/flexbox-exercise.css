@@ -1,0 +1,50 @@
+@font-face {
+    font-family: "Montserrat";
+    font-size: normal;
+    font-weight: normal;
+    src: url(fonts/Montserrat-Medium.ttf);
+}
+
+html {
+    font-family: "Montserrat";
+}
+
+.news {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.news article {
+    height: 100%;
+    background: lightgreen;
+    width: 400px;
+}
+
+.news article img {
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 16/9;
+}
+
+footer {
+    background: grey;
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+    padding: 40px;
+}
+
+.wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 576px) {
+    .news {
+        flex-wrap: wrap;
+    }
+    .news article {
+        width: 100%;
+    }
+}
