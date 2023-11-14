@@ -1,11 +1,39 @@
+@font-face {
+    font-family: "Lato";
+    src: url(fonts/Lato-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: bold;
+    src: url(fonts/Lato-Bold.ttf) format("ttf");
+}
+
+@font-face {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 900;
+    src: url(fonts/Lato-Black.ttf) format("ttf");
+}
+
 html,
 body {
     margin: 0;
     padding: 0;
+    font-family: "Lato";
+}
+
+button.cta {
+    font-family: "Lato";
 }
 
 html * {
     box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
 }
 
 :root {
@@ -13,6 +41,9 @@ html * {
     --grey: #969696;
     --light-grey: #dddddd;
     --red: #e74149;
+    --h-space: 30px;
+    --m-space: 55px;
+    --e-space: 40px;
 }
 
 #main-header {
@@ -26,16 +57,30 @@ html * {
     justify-content: space-between;
 }
 
+.h-spacing {
+    padding-left: var(--h-space);
+    padding-right: var(--h-space);
+}
+
+.m-spacing {
+    padding-top: var(--m-space);
+    padding-bottom: var(--m-space);
+}
+
+.e-spacing {
+    padding-bottom: var(--e-space);
+}
+
 #main-header .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-flow: row;
     flex: 0;
+    width: 100%;
 }
 
 #main-header .container:last-child {
-    display: flex;
     flex-direction: column;
     flex: 1;
     justify-content: space-evenly;
@@ -50,8 +95,73 @@ button.cta {
     border: none;
 }
 
+.teaser {
+    justify-content: center;
+}
+
+.teaser a,
+.teaser h3 {
+    color: var(--red);
+}
+
+.teaser footer:after {
+    content: " ›";
+    color: var(--red);
+}
+
+.teaser > .container {
+    flex-direction: column;
+    display: flex;
+    gap: 10px;
+}
+
+.inner-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+}
+
+body > .wrapper > footer {
+    background-color: var(--light-grey);
+}
+
+#main-footer #footer-logo {
+    display: none;
+}
+
+#main-footer nav ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#main-footer nav ul li {
+    flex-basis: 50%;
+}
+
+#main-footer #copyright {
+    font-size: 0.8em;
+    color: var(--grey);
+    text-align: center;
+}
+
 @media (min-width: 768px) {
     /* Viewport größer/gleich 768px */
+    .teaser article {
+        height: auto;
+        max-width: 400px;
+    }
+    .teaser > .container {
+        flex-direction: row;
+    }
+
+    #main-footer .inner-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #main-footer #footer-logo {
+        display: block;
+    }
 }
 
 @media (min-width: 1200px) {
