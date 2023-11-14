@@ -161,6 +161,7 @@ body > .wrapper > footer {
 
     #main-footer #footer-logo {
         display: block;
+        filter: grayscale(1);
     }
 }
 
