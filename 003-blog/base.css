@@ -32,6 +32,11 @@ html * {
     box-sizing: border-box;
 }
 
+h1 {
+    color: white;
+    text-shadow: 0px 3px 12px #0000004d;
+}
+
 img {
     max-width: 100%;
 }
@@ -86,6 +91,11 @@ img {
     justify-content: space-evenly;
 }
 
+#main-header .inner-wrapper {
+    padding-top: 30px;
+    padding-bottom: 40px;
+}
+
 button.cta {
     border-radius: 12px;
     background: var(--red);
@@ -105,14 +115,45 @@ button.cta {
 }
 
 .teaser footer:after {
-    content: " ›";
+    content: "›";
     color: var(--red);
+    padding-left: 5px;
 }
 
 .teaser > .container {
     flex-direction: column;
     display: flex;
-    gap: 10px;
+    gap: 50px;
+}
+
+.teaser a:hover::before {
+    content: "";
+    display: block;
+    position: relative;
+    bottom: -1.5em;
+    width: calc(100% - 1.25em);
+    height: 1px;
+}
+
+.teaser a:hover {
+    text-decoration: underline;
+}
+
+.teaser a {
+    text-decoration: none;
+}
+
+.teaser a {
+    transition: all 0.5s ease-in-out;
+}
+
+.teaser a:active {
+    color: pink;
+}
+
+/* Wenn man schon mal geklickt hat*/
+.teaser a:visited {
+    /*color: black;*/
 }
 
 .inner-wrapper {
@@ -136,12 +177,27 @@ body > .wrapper > footer {
 
 #main-footer nav ul li {
     flex-basis: 50%;
+    padding-left: 10px;
 }
 
 #main-footer #copyright {
     font-size: 0.8em;
     color: var(--grey);
     text-align: center;
+}
+
+#main-footer nav ul li {
+    margin-bottom: 1em;
+}
+
+#main-footer nav ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+#main-footer nav ul li::marker {
+    content: "›";
+    color: var(--red);
 }
 
 @media (min-width: 768px) {
@@ -153,15 +209,36 @@ body > .wrapper > footer {
     .teaser > .container {
         flex-direction: row;
     }
-
     #main-footer .inner-wrapper {
         display: flex;
         flex-wrap: wrap;
+        justify-content: space-between;
     }
 
     #main-footer #footer-logo {
         display: block;
         filter: grayscale(1);
+    }
+    #main-footer #copyright {
+        flex-basis: 100%;
+        text-align: right;
+        margin-top: -1em;
+    }
+    #main-header .inner-wrapper::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: white;
+        z-index: 0;
+        display: block;
+    }
+
+    #main-header .inner-wrapper a,
+    #main-header .inner-wrapper nav {
+        z-index: 1;
     }
 }
 
