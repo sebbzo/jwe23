@@ -216,6 +216,23 @@ section.teaser > button {
     margin-bottom: var(--h-space);
 }
 
+/* Kontakt Seite */
+
+section.contact-element .contact-form form:nth-child(1) {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+section.contact-element .contact-form form:nth-child(1) input {
+    margin-right: 1em;
+}
+
+section.contact-element .contact-form form:nth-child(2) label,
+section.contact-element .contact-form form:nth-child(2) input {
+    width: 100%;
+}
+
 /* Media Queries */
 
 @media (min-width: 768px) {
@@ -338,5 +355,10 @@ section.teaser > button {
     }
     .text-img-combination .right p {
         padding-right: 20%;
+    }
+
+    /* Kontakt */
+    .header-spacing {
+        padding-top: 70px;
     }
 }

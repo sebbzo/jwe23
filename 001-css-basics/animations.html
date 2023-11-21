@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Anmimationen</title>
+
+        <style>
+            body {
+                background: lightcoral;
+            }
+
+            #cameleon {
+                width: 300px;
+                height: 300px;
+                background: blue;
+
+                transition: all 2s ease;
+            }
+
+            @media (min-width: 320px) and (max-width: 470px) {
+                #cameleon {
+                    background: greenyellow;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <div id="cameleon"></div>
+            </header>
+        </div>
+    </body>
+</html>

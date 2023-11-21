@@ -1,0 +1,53 @@
+.inner-wrapper {
+    padding: 20px;
+}
+
+body {
+    background: #f0f0f1 !important;
+}
+
+div.logo-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.logo {
+    width: 80px;
+}
+
+section.login form {
+    background: white;
+    padding: 35px 25px 35px 25px;
+    border: 1px solid lightgrey;
+}
+
+section.login form div input {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+section.login input[type="text"] {
+    font-size: 24px;
+    line-height: 1.33333333;
+    min-height: 40px;
+}
+
+section.login form div.submit-button {
+    display: flex;
+    justify-content: end;
+}
+
+section.login input[type="submit"] {
+    border: none;
+    border-radius: 3px;
+    width: 100px;
+    height: 40px;
+    margin-top: 5px;
+}
+
+.inner-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 400px;
+}
