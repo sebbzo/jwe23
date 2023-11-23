@@ -218,18 +218,79 @@ section.teaser > button {
 
 /* Kontakt Seite */
 
-section.contact-element .contact-form form:nth-child(1) {
-    display: flex;
-    flex-wrap: wrap;
+/* Optionales Styling */
+/*
+form .row {
+    margin-bottom: 30px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+textarea,
+select {
+    width: 100%;
+    border: 1px solid var(--light-brown);
+    padding: 0.5em;
+}
+
+input[type="submit"] {
+    background: var(--light-brown);
+    border: none;
+    font-size: 1.25rem;
+    font-family: Josefin Sans;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: white;
+    padding: 0.5rem;
+}
+
+*/
+
+.w-100 {
     width: 100%;
 }
 
-section.contact-element .contact-form form:nth-child(1) input {
-    margin-right: 1em;
+section.contact-element .contact-form form .row {
+    margin-bottom: 25px;
 }
 
-section.contact-element .contact-form form:nth-child(2) label,
-section.contact-element .contact-form form:nth-child(2) input {
+section.contact-element .contact-form form .row:first-of-type {
+    margin-bottom: 25px;
+    display: flex;
+}
+
+section.contact-element .contact-form form .row:first-of-type > input {
+    margin-right: 20px;
+}
+
+section.contact-element .contact-form form .row > label {
+    font-weight: 700;
+}
+
+section.contact-element .contact-form form .row > input,
+section.contact-element .contact-form form .row > textarea {
+    margin-top: 5px;
+    padding: 10px;
+    border-color: var(--light-brown);
+    border: 2px solid var(--light-brown);
+    color: var(--light-grey);
+}
+
+section.contact-element .contact-form form .row:last-child input {
+    background-color: var(--light-brown);
+    color: white;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 3px;
+    width: 150px;
+}
+
+/* Google Maps */
+
+.google-maps iframe {
+    display: flex;
+    justify-self: center;
     width: 100%;
 }
 
@@ -360,5 +421,18 @@ section.contact-element .contact-form form:nth-child(2) input {
     /* Kontakt */
     .header-spacing {
         padding-top: 70px;
+    }
+
+    .row-wrapper {
+        display: flex;
+    }
+
+    section.contact-element .row-wrapper > .contact-form {
+        width: 70%;
+        padding-right: calc(var(--h-space) * 4);
+    }
+
+    section.contact-element .row-wrapper > address {
+        width: 30%;
     }
 }

@@ -31,91 +31,172 @@
             <main class="header-spacing">
                 <section class="contact-element inner-wrapper h-spacing">
                     <h2>Bestellen Sie bei uns</h2>
-                    <div class="contact-form">
-                        <form action="/action_page.php">
-                            <label for="man">Herr</label><br />
-                            <input
-                                type="radio"
-                                id="man"
-                                name="basic_values"
-                                value="man"
-                            /><br />
-                            <label for="woman">Frau</label><br />
-                            <input
-                                type="radio"
-                                id="woman"
-                                name="basic_values"
-                                value="woman"
-                            /><br />
-                            <label for="firm">Firma</label><br />
-                            <input
-                                type="radio"
-                                id="firm"
-                                name="basic_values"
-                                value="firm"
-                            /><br />
-                        </form>
-                        <form action="/action_page.php">
-                            <label for="name">Name</label><br />
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                value="Name"
-                            /><br />
-                            <label for="email">Emailadresse</label><br />
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                value="Emailadresse"
-                            /><br />
-                            <label for="betreff">Betreff</label><br />
-                            <input
-                                type="betreff"
-                                id="betreff"
-                                name="betreff"
-                                value="betreff"
-                            /><br />
-                            <label for="wunsch-lieferdatum"
-                                >Wunsch-Lieferdatum</label
-                            ><br />
-                            <input
-                                type="date"
-                                id="wunsch-lieferdatum"
-                                name="wunsch-lieferdatum"
-                                value="tt.mm.jjjj"
-                            /><br />
-                            <label for="wunsch-lieferdatum"
-                                >Wunsch-Lieferdatum</label
-                            ><br />
-                            <input
-                                type="date"
-                                id="wunsch-lieferdatum"
-                                name="wunsch-lieferdatum"
-                                value="tt.mm.jjjj"
-                            /><br />
-                            <label for="nachricht">Nachricht</label><br />
-                            <input
-                                type="nachricht"
-                                id="nachricht"
-                                name="nachricht"
-                                value="detail"
-                            /><br />
-                            <input type="submit" />
-                        </form>
+                    <div class="row-wrapper h-spacing">
+                        <div class="contact-form">
+                            <form
+                                action="https://jwe.obinet.at/bakery_order.php"
+                                method="post"
+                            >
+                                <input
+                                    type="hidden"
+                                    name="key"
+                                    value="wifi2023"
+                                />
+                                <input
+                                    type="hidden"
+                                    name="toMail"
+                                    value="sebastian.oberreiter@hotmail.com"
+                                />
+
+                                <div class="row">
+                                    <label for="man">Herr</label><br />
+                                    <input
+                                        type="radio"
+                                        id="man"
+                                        name="basic_values"
+                                        value="man"
+                                    /><br />
+                                    <label for="woman">Frau</label><br />
+                                    <input
+                                        type="radio"
+                                        id="woman"
+                                        name="basic_values"
+                                        value="woman"
+                                    /><br />
+                                    <label for="firm">Firma</label><br />
+                                    <input
+                                        type="radio"
+                                        id="firm"
+                                        name="basic_values"
+                                        value="firm"
+                                    /><br />
+                                </div>
+                                <div class="row">
+                                    <label for="name">Name</label><br />
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        value="Name"
+                                        class="w-100"
+                                    /><br />
+                                </div>
+                                <div class="row">
+                                    <label for="email">Emailadresse</label
+                                    ><br />
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        value="Emailadresse"
+                                        class="w-100"
+                                    /><br />
+                                </div>
+                                <div class="row">
+                                    <label for="betreff">Betreff</label><br />
+                                    <input
+                                        type="betreff"
+                                        id="betreff"
+                                        name="betreff"
+                                        value="betreff"
+                                        class="w-100"
+                                    /><br />
+                                </div>
+                                <div class="row">
+                                    <label for="wunsch-lieferdatum"
+                                        >Wunsch-Lieferdatum</label
+                                    ><br />
+                                    <input
+                                        type="date"
+                                        id="wunsch-lieferdatum"
+                                        name="wunsch-lieferdatum"
+                                        value="tt.mm.jjjj"
+                                        class="w-100"
+                                    /><br />
+                                </div>
+                                <div class="row">
+                                    <label for="wunsch-lieferdatum"
+                                        >Wunsch-Lieferdatum</label
+                                    ><br />
+                                    <input
+                                        type="date"
+                                        id="wunsch-lieferdatum"
+                                        name="wunsch-lieferdatum"
+                                        value="tt.mm.jjjj"
+                                        class="w-100"
+                                    /><br />
+                                </div>
+                                <div class="row">
+                                    <label for="nachricht">Nachricht</label
+                                    ><br />
+                                    <textarea
+                                        name="message"
+                                        id="message"
+                                        cols="30"
+                                        rows="10"
+                                        class="w-100"
+                                        placeholder="blablablablablablabla"
+                                        required
+                                    ></textarea>
+                                    <br />
+                                </div>
+                                <div class="row checkbox">
+                                    <input
+                                        type="checkbox"
+                                        name="gdpr"
+                                        id="gdpr"
+                                    />
+                                    <label for="gdpr"
+                                        >Ja, ich bin mit den
+                                        <a href="#">Datenschutzbestimmungen</a>
+                                        einverstanden.</label
+                                    >
+                                </div>
+                                <div class="row">
+                                    <label for="feedback"
+                                        >Wie haben Sie von uns erfahren?</label
+                                    ><br />
+                                    <select name="feedback" id="feedback">
+                                        <option value="" disabled selected>
+                                            Bitte wählen Sie eine Option
+                                        </option>
+                                        <option value="Google">Google</option>
+                                        <option value="Friend">
+                                            Durch einen Freund
+                                        </option>
+                                        <option value="Magazine">
+                                            Aus einer Zeitung
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="row">
+                                    <input type="submit" />
+                                </div>
+                            </form>
+                        </div>
+                        <address>
+                            <p>Konditorei Bakery</p>
+                            <p>Musterstraße 1</p>
+                            <p>2345 Stadt</p>
+                            &nbsp;
+                            <p>Tel. 0123 123 123 53</p>
+                            <p>Email: bakery@gmail.ciom</p>
+                        </address>
                     </div>
-                    <address>
-                        <p>Konditorei Bakery</p>
-                        <p>Musterstraße 1</p>
-                        <p>2345 Stadt</p>
-                        &nbsp;
-                        <p>Tel. 0123 123 123 53</p>
-                        <p>Email: bakery@gmail.ciom</p>
-                    </address>
                 </section>
                 <section class="location-element">
                     <h2>Anfahrtsplan</h2>
+                    <div class="google-maps">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2679.5776650392845!2d13.042119413045672!3d47.809022073855964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4776907bdc3aaaa9%3A0xf72cc1140ab5220d!2sWIFI%20Salzburg!5e0!3m2!1sde!2sat!4v1700769278442!5m2!1sde!2sat"
+                            width="600"
+                            height="450"
+                            style="border: 0"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                        ></iframe>
+                    </div>
                 </section>
             </main>
             <footer id="main-footer">
