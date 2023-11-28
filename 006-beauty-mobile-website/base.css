@@ -1,0 +1,132 @@
+html body {
+    font-family: "Segoe UI";
+    margin: 0;
+    padding: 0;
+    font-size: 4vw;
+}
+
+html * {
+    box-sizing: border-box;
+}
+
+.inner-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 420px;
+}
+
+:root {
+    --h-space: 30px;
+    --light-pink: #eca49c;
+    --light-grey: #888888;
+    --light-green: #89d46f;
+}
+
+.wrapper {
+    margin-top: 40px;
+}
+
+header {
+    position: relative;
+    overflow: hidden;
+}
+
+h1 {
+    color: var(--light-pink);
+    font-size: 6em;
+    text-transform: uppercase;
+    font-weight: 400;
+    padding-left: 30px;
+    padding-right: 30px;
+    line-height: 1em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.overline {
+    color: var(--light-grey);
+    text-transform: uppercase;
+    font-size: 1em;
+    text-align: center;
+    letter-spacing: 7px;
+}
+
+.subtitle {
+    color: var(--light-pink);
+    padding-left: 30px;
+}
+
+.info-box {
+    background: var(--light-grey);
+    display: flex;
+    width: 35%;
+    justify-content: end;
+    padding-right: 1em;
+    line-height: 55px;
+    letter-spacing: 5px;
+    margin-top: 30px;
+}
+
+.info-box p {
+    color: white;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    line-height: 1em;
+    text-transform: uppercase;
+    font-size: 0.8em;
+}
+
+.pink-bar {
+    background: var(--light-pink);
+    height: 70px;
+    margin-top: 200px;
+}
+
+.pricing {
+    background: black;
+    width: 166px;
+    height: 166px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 50px;
+    left: 5%;
+}
+
+.pricing p {
+    color: white;
+    font-size: 37px;
+    font-weight: 700;
+}
+
+img {
+    position: absolute;
+    bottom: 0;
+    right: -50px;
+    width: 280px;
+}
+
+footer {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+button {
+    background: var(--light-green);
+    border-radius: 26px;
+    border: none;
+    width: 100%;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+button p {
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
