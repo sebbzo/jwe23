@@ -1,0 +1,106 @@
+:root {
+    --blue: #95e2ff;
+    --yellow: #ffba00;
+    --light-brown: #c7b49b;
+    --green: #259025;
+    --dark-brown: #8d5730;
+}
+
+html body {
+    padding: 0;
+    margin: 0;
+    background: var(--blue);
+}
+
+.cloud {
+    position: relative;
+    height: auto;
+}
+.cloud * {
+    background-color: white;
+    position: absolute;
+}
+
+.cloud-1 {
+    height: 75px;
+    width: 180px;
+    border-radius: 50%;
+    left: 129px;
+    right: 120px;
+    top: 148px;
+}
+
+.cloud-2 {
+    height: 100px;
+    width: 250px;
+    border-radius: 50%;
+    right: 47px;
+    left: 130px;
+    top: 80px;
+}
+
+.cloud-3 {
+    width: 180px;
+    height: 75px;
+    border-radius: 50%;
+    right: 200px;
+    left: 48px;
+    top: 110px;
+}
+
+main {
+    position: relative;
+}
+
+main .earth {
+    background-color: var(--light-brown);
+    height: 172px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+main .sun {
+    background-color: var(--yellow);
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 96px;
+    margin-left: 50px;
+    z-index: -1;
+}
+
+main .tree {
+    position: fixed;
+    bottom: 59px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 250px;
+}
+
+main .tree * {
+    position: relative;
+}
+
+main .tree .tree-1 {
+    border-radius: 50%;
+    height: 92px;
+    width: 92px;
+    background-color: var(--green);
+    margin-bottom: -20px;
+}
+
+main .tree .tree-2 {
+    width: 15px;
+    height: 80px;
+    background-color: var(--dark-brown);
+}
+
+.inner-wrapper {
+    max-width: 430px;
+    margin-left: auto;
+    margin-right: auto;
+}
