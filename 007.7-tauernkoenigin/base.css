@@ -1,0 +1,221 @@
+@font-face {
+    font-family: CherrySwash;
+    src: url(fonts/CherrySwash-Bold.ttf);
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: CherrySwash;
+    src: url(fonts/CherrySwash-Regular.ttf);
+    font-weight: 400;
+}
+
+:root {
+    --dark-green: #053336;
+    --gold: #a9a084;
+    --light-grey: #e8e8e8;
+    --h-spacing: 30px;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Georgia;
+    /*font-size:14px*/
+    color: var(--text-color);
+}
+
+h1 {
+    font-family: CherrySwash;
+    font-weight: 400;
+    text-align: center;
+}
+
+h2 {
+    font-family: CherrySwash;
+    font-weight: 700;
+    text-align: center;
+    color: var(--gold);
+}
+
+html * {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+}
+
+.inner-wrapper {
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1024px;
+}
+
+/* Nav-Bar */
+
+div#logo {
+    background-image: url("img/layout/logo.svg");
+    height: 80px;
+    width: 150px;
+    background-position: center;
+    background-size: cover;
+}
+
+#nav-bar {
+    background-color: var(--dark-green);
+    height: 100px;
+}
+#nav-bar .inner-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+}
+
+/* Hero */
+
+#hero {
+    height: 560px;
+    background-image: url("img/woman-hot-drink-slider.jpg");
+    background-size: cover;
+    background-position: center;
+    border-bottom: 5px solid var(--gold);
+}
+
+#hero .inner-wrapper {
+    text-align: center;
+}
+
+#hero h1 {
+    line-height: 35px;
+    margin: 0;
+    padding-top: 60px;
+}
+
+#hero p {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 5.26px;
+    color: var(--dark-green);
+    font-size: 11px;
+    padding-top: 30px;
+    padding-bottom: 40px;
+    margin: 0;
+}
+
+#hero .button {
+    text-decoration: none;
+    font-family: CherrySwash;
+    font-weight: 400;
+    color: white;
+    background-color: var(--dark-green);
+    border-radius: 23px;
+    padding: 12px 33px;
+    margin-top: 20px;
+}
+
+/* Teaser Element */
+
+.teaser-element article {
+    margin-top: 2em;
+    margin-bottom: 4em;
+}
+
+.teaser-element img {
+    aspect-ratio: 315/231;
+    object-fit: cover;
+    object-position: center;
+}
+
+.teaser-element p {
+    color: var(--gold);
+    text-align: center;
+}
+
+.teaser-element a {
+    color: var(--dark-green);
+    text-align: center;
+    font-style: italic;
+    margin: 0 auto;
+}
+
+.teaser-element .link-teaser {
+    text-align: center;
+}
+
+/* Gallery Element */
+
+.gallery-element {
+    background-color: var(--light-grey);
+    padding-top: var(--h-spacing);
+    padding-bottom: var(--h-spacing);
+}
+
+.gallery-element h2 {
+    color: var(--dark-green);
+}
+
+.gallery-element p {
+    color: var(--dark-green);
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px 20px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "pic-1 pic-3"
+        "pic-2 pic-3";
+}
+
+.grid img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.pic-1 {
+    grid-area: pic-1;
+}
+
+.pic-2 {
+    grid-area: pic-2;
+}
+
+.pic-3 {
+    grid-area: pic-3;
+}
+
+/* Text-Button-Element */
+
+.text-button-element {
+    background-color: var(--gold);
+    padding-top: var(--h-spacing);
+    padding-bottom: calc(2 * var(--h-spacing));
+    text-align: center;
+}
+
+.text-button-element * {
+    color: white;
+}
+.text-button-element a {
+    border-radius: 23px;
+    padding: 12px 33px;
+    border: 1px solid white;
+    text-decoration: none;
+}
+
+.text-button-element p {
+    padding-bottom: 1em;
+}
+
+@media (min-width: 768px) {
+}
