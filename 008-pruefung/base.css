@@ -1,0 +1,339 @@
+@font-face {
+    font-family: Montserrat;
+    src: url(fonts/Montserrat-Bold.ttf);
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: Montserrat;
+    src: url(fonts/Montserrat-Regular.ttf);
+    font-weight: 400;
+}
+
+:root {
+    --primary: #08b8b3;
+    --dark-grey: #808080;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+main {
+    position: relative;
+}
+
+html * {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+}
+
+.inner-wrapper {
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1024px;
+}
+
+/* NAV BAR */
+#main-header #nav-bar {
+    background-color: black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--primary);
+}
+
+#main-header #nav-bar .flexbox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#main-header #nav-bar .flexbox #logo {
+    width: 80px;
+}
+
+#main-header #nav-bar .flexbox #main-nav a img {
+    width: 33px;
+}
+
+/* HERO */
+
+#main-header #hero {
+    background-image: url(img/grafenbergalm-skigebiet.png);
+    background-position: center;
+    background-size: cover;
+    height: 190px;
+}
+
+/* SIEGEL */
+.seal img {
+    display: none;
+}
+
+/* TEASER ELEMENT */
+.teaser-element .inner-wrapper > h1 {
+    color: var(--primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 23px;
+}
+
+.teaser-element .inner-wrapper > p {
+    text-align: center;
+    line-height: 20px;
+    margin-bottom: 30px;
+}
+
+.teaser-element .inner-wrapper .flexbox article {
+    background-color: var(--primary);
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.teaser-element .inner-wrapper .flexbox article h2 {
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+.teaser-element .inner-wrapper .flexbox article p {
+    font-size: 16px;
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+}
+.teaser-element .inner-wrapper .flexbox article a {
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+}
+
+/* BUTTON ELEMENT */
+.button-element {
+    background-color: var(--dark-grey);
+    padding-top: 50px;
+    padding-bottom: 60px;
+}
+
+.button-element h2 {
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 30px;
+    margin-top: 0;
+}
+
+.button-element p {
+    color: white;
+    text-align: center;
+    margin-bottom: 34px;
+    font-size: 16px;
+}
+
+.button-element a {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.button-element .app-2 {
+    margin-bottom: 0;
+}
+
+.button-element a img {
+    width: 197px;
+}
+
+/* FOOTER */
+
+#main-footer {
+    background-color: black;
+    padding-top: 50px;
+}
+
+#main-footer ul.footer-links {
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#main-footer .footer-links li {
+    text-align: center;
+    margin-bottom: 15px;
+}
+#main-footer .footer-links li a {
+    color: var(--primary);
+    font-size: 16px;
+}
+
+#main-footer #copyright p {
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    line-height: 18px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+@media (max-width: 1023px) {
+    .mobile-width {
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* TABLET */
+@media (min-width: 1024px) {
+    /* HERO */
+
+    #main-header #hero {
+        height: 352px;
+    }
+
+    /* SIEGEL */
+    .seal {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        right: 120px;
+        top: -130px;
+    }
+    .seal img {
+        display: block;
+    }
+
+    /* TEASER ELEMENT */
+    .teaser-element .inner-wrapper > h1 {
+        text-align: left;
+        font-size: 36px;
+        max-width: 50%;
+        margin-top: 25px;
+        margin-bottom: 30px;
+    }
+    .teaser-element .inner-wrapper > p {
+        font-size: 18px;
+        text-align: left;
+        max-width: 70%;
+        line-height: 25px;
+        margin-bottom: 33px;
+    }
+
+    .teaser-element .inner-wrapper .flexbox {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 36px;
+    }
+
+    .teaser-element .inner-wrapper .flexbox article {
+        margin-top: 0;
+        flex-basis: 100%;
+        margin-bottom: 0;
+    }
+
+    /* BUTTON ELEMENT */
+    .button-element .app-download-buttons {
+        display: flex;
+        gap: 32px;
+        justify-content: center;
+    }
+    .button-element .app-download-buttons * {
+        margin: 0;
+    }
+
+    /* FOOTER */
+
+    #main-footer #copyright p {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+}
+
+/* DESKTOP */
+@media (min-width: 1200px) {
+    /* HERO */
+
+    #main-header #hero {
+        height: 580px;
+    }
+
+    /* SIEGEL */
+    .seal {
+        right: 40px;
+        width: 330px;
+        top: -210px;
+    }
+
+    /* TEASER ELEMENT */
+    .teaser-element .inner-wrapper > h1 {
+        font-size: 65px;
+        margin-top: 50px;
+        max-width: 85%;
+        margin-bottom: 36px;
+    }
+    .teaser-element .inner-wrapper > p {
+        line-height: 25px;
+        margin-bottom: 60px;
+    }
+
+    .teaser-element .inner-wrapper .flexbox {
+        margin-bottom: 60px;
+    }
+
+    /* BUTTON ELEMENT */
+    .button-element {
+        padding-top: 54px;
+        padding-bottom: 56px;
+    }
+
+    .button-element h1 {
+        margin-bottom: 24px;
+    }
+
+    .button-element p {
+        margin-bottom: 30px;
+    }
+
+    /* FOOTER */
+
+    #main-footer {
+        padding-top: 115px;
+        padding-bottom: 50px;
+    }
+    #main-footer .flexbox {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #main-footer .footer-links li {
+        text-align: left;
+    }
+
+    #main-footer #copyright p {
+        text-align: end;
+        padding-bottom: 0;
+    }
+}
