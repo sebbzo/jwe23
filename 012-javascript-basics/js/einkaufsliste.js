@@ -11,6 +11,9 @@ let addNewElement = function () {
     getAllElementsFromList();
 };
 
+let test = '';
+console.log(typeof test);
+
 let getAllElementsFromList = function () {
     let htmlOutput = "";
     // myList Elemente alle durchgehen und Zeile für Zeile in htmlOutput verketten.
@@ -19,3 +22,7 @@ let getAllElementsFromList = function () {
     });
     document.querySelector("#myListOutput").innerHTML = htmlOutput;
 };
+
+let my2List = [];
+
+let new2Element = document.querySelector("#newElement").innerText;
