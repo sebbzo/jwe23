@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Elevator Home</title>
+        <link rel="stylesheet" href="elevator2.css" />
+    </head>
+    <body>
+        <div class="ground"></div>
+        <div class="building">
+            <div class="elevator"></div>
+        </div>
+        <div id="controls"></div>
+
+        <script>
+            let currentFloor = 0;
+            let Floors = ["ug", "0", "1", "2", "3"];
+
+            let elevator = document.querySelector(".elevator");
+            console.log(elevator);
+            elevator.classList.add("floor-0");
+
+            let goToFloor = function (floor) {
+                elevator.classList.replace(
+                    "floor-" + currentFloor,
+                    "floor-" + floor
+                );
+                currentFloor = floor;
+            };
+
+            let createButtons = function () {
+                let htmlOutput = "";
+                Floors.forEach((floor) => {
+                    htmlOutput += `<button class="btn btn-primary" onclick="goToFloor('${floor}')">${floor}</button>`;
+                });
+                document.querySelector("#controls").innerHTML = htmlOutput;
+            };
+
+            createButtons();
+
+            goToFloor("ug");
+        </script>
+    </body>
+</html>

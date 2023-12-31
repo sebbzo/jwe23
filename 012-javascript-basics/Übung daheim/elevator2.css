@@ -1,0 +1,58 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+html * {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: skyblue;
+}
+
+.ground {
+    background-color: brown;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.building {
+    background-color: gray;
+    height: 500px;
+    width: 200px;
+    position: absolute;
+    bottom: 40px;
+    right: 20%;
+}
+
+.elevator {
+    background-color: yellow;
+    height: calc(100% / 5);
+    bottom: calc(100% / 5 * 1);
+    width: 100%;
+    position: absolute;
+}
+
+.floor-ug {
+    bottom: 0 !important;
+}
+
+.floor-0 {
+    bottom: calc(100% / 5 * 1) !important;
+}
+
+.floor-1 {
+    bottom: calc(100% / 5 * 2) !important;
+}
+
+.floor-2 {
+    bottom: calc(100% / 5 * 3) !important;
+}
+
+.floor-3 {
+    bottom: calc(100% / 5 * 4) !important;
+}

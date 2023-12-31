@@ -31,13 +31,13 @@ html * {
 }
 
 #elevator {
-    --floor: 0;
+    --floor: 0; /* benutzerdefinierte CSS Variable */
     width: calc(100% / 5);
     height: calc(100% / 5);
     background: goldenrod;
     border: 3px solid lightgray;
     position: absolute;
-    bottom: calc(100% / 5 * var(--floor));
+    bottom: calc(100% / 5 * var(--floor)); /* Diese wird hier verwendet */
     transition: all 3s ease-in-out;
 }
 
