@@ -1,6 +1,6 @@
 let htmlOutput = "";
 
-for (let i = 0; i < 19; i++) {
+for (let i = 1; i < 9; i++) {
     htmlOutput +=
         '<a href="img/full/' +
         i +

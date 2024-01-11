@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Gallery in JavaScript dynamically generated</title>
+        <link rel="stylesheet" href="../vendor/fancybox/fancybox.css" />
+    </head>
+    <body>
+        <!-- 
+    
+            Bilder liegen unter:
+
+            Volle Auflösung:            img/fullx.jpg
+            Thumbnail/Miniaturbild:     img/thumbs/x.jpg
+
+        -->
+
+        <div id="gallery">
+            <a href="img/full/1.jpg" data-fancybox="gallery">
+                <img src="img/thumbs/1.jpg" />
+            </a>
+        </div>
+
+        <!-- Aufgabe bis zum nächsten Mal, automatisch 20 Bilder generieren mit JavaScript -->
+        <!-- Mit for Schleifen machen (von w3 Schools)-->
+        <script src="../vendor/fancybox/fancybox.umd.js"></script>
+        <script>
+            Fancybox.bind("[data-fancybox]", {});
+
+            let createDynamicGallery = function () {
+                let htmlOutput = "";
+
+                for (let img = 1; img <= 4; img++) {
+                    htmlOutput += `<a href="img/full/${img}.jpg" data-fancybox="gallery"><img src="img/thumbs/${img}.jpg" /></a>`;
+                }
+
+                document.querySelector("#gallery").innerHTML = htmlOutput;
+            };
+
+            createDynamicGallery();
+        </script>
+    </body>
+</html>
