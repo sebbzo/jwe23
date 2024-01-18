@@ -10,17 +10,19 @@ if (typeof Cookies.get("product_list") !== "undefined") {
     myList = Cookies.get("product_list").split(",");
 }
 
-// Vorlage für ein Listenelement
-/*
+/* RegEx Exkursion*/
+let myEmail = "random@email.local";
 
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-  <label class="form-check-label" for="flexCheckDefault">
-    Default checkbox
-  </label>
-</div>
+function validateEmail(email) {
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
+}
 
-*/
+if (validateEmail(myEmail) == true) {
+    console.log(`${myEmail} is a valid email address`);
+} else {
+    console.log(`${myEmail} is not a valid email address`);
+}
 
 // same as myList.forEach {...}
 // Reine Information
@@ -30,9 +32,22 @@ $(myList).each(function (i, product) {
 });
 
 const addNewProduct = function () {
-    myList.push($("#new-product").val());
-    Cookies.set("product_list", myList, { expires: 365 });
-    prependNewProduct(myList.length - 1, myList[myList.length - 1]);
+    let value = $("#new-product").val();
+
+    let filteredList = myList.filter(function (article) {
+        return article.toLowerCase().includes(value.toLowerCase());
+    });
+
+    if (!filteredList.length) {
+        myList.push(value);
+        Cookies.set("product_list", myList, { expires: 365 });
+
+        //Alternative Speichermöglichkeit für Daten in der Local Storage des Browsers
+        prependNewProduct(myList.length - 1, myList[myList.length - 1]);
+    } else {
+        $("#new-product").val("");
+    }
+
     $("#new-product").val("").focus();
 };
 
@@ -68,30 +83,52 @@ const createProductList = function () {
 };
 createProductList();
 
-// myList.push('Banane');
-/* 
-let newElement = document.querySelector("#newElement");
+// FILTER FUNKTION
 
-let addNewElement = function () {
-    let newElementValue = newElement.value;
-    console.log(newElementValue);
-    myList.push(newElementValue);
-    getAllElementsFromList();
+const showFilteredList = function (list) {
+    $("#product-list").empty();
+
+    $(list).each(prependNewProduct);
 };
 
-let test = '';
-console.log(typeof test);
+const filterList = function () {
+    let value = $(this).val().toLowerCase();
 
-let getAllElementsFromList = function () {
-    let htmlOutput = "";
-    // myList Elemente alle durchgehen und Zeile für Zeile in htmlOutput verketten.
-    myList.forEach((element) => {
-        htmlOutput += element + "<br>";
+    let filteredList = myList.filter(function (article) {
+        return article.toLowerCase().includes(value);
     });
-    document.querySelector("#myListOutput").innerHTML = htmlOutput;
+
+    showFilteredList(filteredList);
 };
 
-let my2List = [];
+$("#new-product").on("keyup", filterList);
+$("#add-product").on("click", filterList);
 
-let new2Element = document.querySelector("#newElement").innerText;
- */
+$("input.form-check-input").on("click", function () {
+    let checkbox = $(this);
+
+    console.log(checkbox.prop("checked"));
+
+    if (checkbox.prop("checked") == true) {
+        //speichere in array
+    }
+});
+
+// HÜ: Wenn die Liste aktualisiert wird, müssen die Cookies (Liste) auch immer aktualisiert werden (damit man weiß was angehakt ist und was nicht) (siehe unten)
+/* Geht mit Cookies.set('products_bought',[false, false, false, false]);*/
+
+// selektieren aller Elemente die Checkboxen haben
+
+$("[data-product-id]").each(function (index, produt) {
+    let element = $(this);
+
+    if (element.attr("data-product-id") == 6) {
+        element.find("input.form-check-input").prop("checked", true);
+    }
+});
+
+$("input.form-check-input").each(function (index, input) {
+    if ($(input).attr("id") == "product-" + 2) {
+        $(input).prop("checked", true);
+    }
+});
