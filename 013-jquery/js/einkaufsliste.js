@@ -83,6 +83,18 @@ const createProductList = function () {
 };
 createProductList();
 
+const setCheckedListItems = function () {
+    const cookie = Cookies.get("checked_items");
+    if (typeof cookie != "undefined" && cookie != "") {
+        let checkedItems = cookie.split(",");
+        $(checkedItems).each(function (index, value) {
+            $("#product-" + value).prop("checked", true); //
+        });
+    }
+};
+
+setCheckedListItems();
+
 // FILTER FUNKTION
 
 const showFilteredList = function (list) {
@@ -104,21 +116,38 @@ const filterList = function () {
 $("#new-product").on("keyup", filterList);
 $("#add-product").on("click", filterList);
 
-$("input.form-check-input").on("click", function () {
-    let checkbox = $(this);
+// lesen der aktuell gechecked inputs
+// bauen des Arrays mit der Liste aller product-IDs der Elemente die gecheckt sind
+// Speichern in Cookies
 
-    console.log(checkbox.prop("checked"));
+let checkedInputs;
 
-    if (checkbox.prop("checked") == true) {
-        //speichere in array
-    }
+$("#product-list input").change(function () {
+    let listOfCheckedInputs = [];
+
+    let checkedInputs = $("input:checked");
+    checkedInputs.each(function () {
+        let productId = $(this).closest("[data-product-id]").data("product-id");
+        console.log(productId);
+        listOfCheckedInputs.push(productId);
+        console.log(listOfCheckedInputs);
+    });
+
+    Cookies.set("checked_items", listOfCheckedInputs.join(","), {
+        expires: 365,
+    });
 });
+
+// Cookie auslesen
+// Array mit Schleife durchgehen
+// Listenelemente .prop() aktualisieren
 
 // HÜ: Wenn die Liste aktualisiert wird, müssen die Cookies (Liste) auch immer aktualisiert werden (damit man weiß was angehakt ist und was nicht) (siehe unten)
 /* Geht mit Cookies.set('products_bought',[false, false, false, false]);*/
 
 // selektieren aller Elemente die Checkboxen haben
 
+/*
 $("[data-product-id]").each(function (index, produt) {
     let element = $(this);
 
@@ -132,3 +161,4 @@ $("input.form-check-input").each(function (index, input) {
         $(input).prop("checked", true);
     }
 });
+*/
