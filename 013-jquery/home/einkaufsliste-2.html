@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style
+            src="../../vendor/bootstrap-5.3.2-dist/css/bootstrap-grid.min.css"
+        ></style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="column"><h1>Einkaufsliste mit jQuery</h1></div>
+                <div class="input-group">
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Geben Sie ein neues Produkt ein"
+                        aria-label="Neues Produkt"
+                        aria-describedby="add-product"
+                        id="new-product"
+                    />
+                    <button class="btn" type="button" id="add-product">
+                        Hinzufügen
+                    </button>
+                </div>
+                <div id="product-list">
+                    <!-- here comes dynamic HTML -->
+                </div>
+            </div>
+        </div>
+
+        <script src="../../vendor/jquery/jquery-3.7.1.min.js"></script>
+        <script src="../../vendor/bootstrap-5.3.2-dist/js/bootstrap.bundle.js"></script>
+        <script src="../../vendor/cookie/js.cookie.min.js"></script> <!-- Unbedingt vor dem JS !-->
+        <script src="einkaufsliste-2.js"></script>
+    </body>
+</html>
