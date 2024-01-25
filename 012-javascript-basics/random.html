@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Random</title>
+    </head>
+    <body>
+        <input type="text" id="key" readonly /><button>generate Key</button>
+        <script src="../vendor/jquery/jquery-3.7.1.min.js"></script>
+
+        <script>
+            const allowedChars = "ajnsakldjnadslkfjnadlkjasdfasdf";
+            const allowedCharsLength = allowedChars.length;
+            const keyLength = 16;
+
+            const generateKey = function () {
+                let key = "";
+
+                for (let i = 0; i < keyLength; i++) {
+                    let randNumber = Math.floor(
+                        Math.random() * allowedCharsLength
+                    );
+
+                    key += allowedChars.charAt(randNumber);
+                }
+
+                $("#key").val(key);
+            };
+
+            $("button").click(generateKey);
+        </script>
+    </body>
+</html>
