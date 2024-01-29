@@ -71,3 +71,27 @@ console.log(JSON.parse(serverResponse));
 //convert/parse string into object
 let serverResponse2 = '{"text": 1, "email": "mo@obinet.at", "zip": 5600}';
 console.log(JSON.parse(serverResponse2));
+
+// Für Lokal (Achtung Anfrage verzögert)
+
+$.getJSON("js/example.json", function (data) {
+    test2 += "Latitude:" + data.lat;
+});
+
+console.log(test2);
+console.log("STOPP");
+
+// Für Online (Achtung Anfrage verzögert)
+
+fetch("https://dummyjson.com/products/1")
+    .then((res) => res.json())
+    .then((data) => {
+        meineVariable = data;
+        test1 = meineVariable.brand;
+        console.log(meineVariable);
+        console.log(test1);
+        // Hier kannst du auf die Variable zugreifen oder weitere Aktionen durchführen
+    })
+    .catch((error) => {
+        console.error("Fehler bei der Fetch-Anfrage:", error);
+    });
