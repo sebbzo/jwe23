@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Quiz</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="row">
+                <div id="quiz">
+                    <form>
+                        <!-- Here Comes Dynamic JS Code -->
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="../vendor/jquery/jquery-3.7.1.min.js"></script>
+        <script>
+            let quizData = [
+                {
+                    question: "Welches Jahr wurde OpenAI gegründet?",
+                    answers: ["2015", "2017", "2018", "2020"],
+                    rightanswer: "2017",
+                },
+                {
+                    question: `Welches Element hat das chemische Symbol "O"`,
+                    answers: ["Eisen", "Sauerstoff", "Natrium", "Kohlenstoff"],
+                    rightanswer: "Sauerstoff",
+                },
+                {
+                    question:
+                        "Welcher Planet ist der vierte in unserem Sonnensystem?",
+                    answers: ["Venus", "Mars", "Jupiter", "Saturn"],
+                    rightanswer: "Mars",
+                },
+                {
+                    question:
+                        "Welches Buch stammt von der Autorin J.K. Rowling?",
+                    answers: [
+                        "Der Hobbit",
+                        "Die Tribute von Panem",
+                        "Harry Potter und der Stein der Weisen",
+                        "Der Da Vinci Code",
+                    ],
+                    rightanswer: "Harry Potter und der Stein der Weisen",
+                },
+            ];
+            let htmlOut = "";
+            $.each(quizData, function (key, entry) {
+                htmlOut += "<label>" + entry.question + "</label>";
+
+                $.each(entry.answers, function (i, e) {
+                    // Einzelne Antwortmöglichkeit
+                    htmlOut += `<div class="form-check">
+                            <input class="form-check-input" type="radio" name="radioname" value="${key}"> <label class="form-check-label">${entry.answers[i]}</label>
+                          </div>`;
+                });
+            });
+
+            htmlOut += `<input
+                            type="submit"
+                            class="btn btn-primary"
+                            name="button_name"
+                            value="Senden"
+                        />`;
+
+            $("#quiz").append(htmlOut);
+
+            $("input").click(function (e) {
+                // Ich brauche die Nummer bei welcher Frage es vorkommt
+                // Dann kann ich es nachschauen im Objekt und Prüfen ob es mit der richtigen Antwort übereinstimmt
+
+                let questionnnumber = e.currentTarget.defaultValue;
+                let questiontext =
+                    e.currentTarget.nextElementSibling.textContent;
+
+                let rightanswer = quizData[questionnnumber].rightanswer;
+
+                if (questiontext == rightanswer) {
+                    console.log(e);
+                    $(e.currentTarget.nextElementSibling).css(
+                        "background-color",
+                        "green"
+                    );
+                    console.log("Das Stimmt");
+                } else {
+                    $(e.currentTarget.nextElementSibling).css(
+                        "background-color",
+                        "red"
+                    );
+                    console.log("Das stimmt nicht!");
+                }
+            });
+
+            let checkedInputs = $("input:checked");
+        </script>
+    </body>
+</html>
