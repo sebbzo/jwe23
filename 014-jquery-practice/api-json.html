@@ -20,7 +20,7 @@
 
             $.getJSON();
 
-            let getGalleryFromAPI = function () {
+            /*let getGalleryFromAPI = function () {
                 $.getJSON(url, function () {
                     $.getJSON(url, function (data) {
                         console.log(data[4].thumbnailUrl);
@@ -49,10 +49,25 @@
                     });
                     $("#gallery").html(htmlOut);
                 });
+            };*/
+
+            let getGalleryFromAPI2 = function () {
+                let htmlOut = "";
+                $.getJSON(url, function (data) {
+                    console.log(data[4].thumbnailUrl);
+
+                    $(data).each(function (index, entry) {
+                        if (index < 30) {
+                            htmlOut += `<img src="${entry.thumbnailUrl}" alt=""  />`;
+                        }
+                    });
+                    $("#gallery").html(htmlOut);
+                    console.log("Unten");
+                });
             };
 
             $("#load").on("click", function () {
-                getGalleryFromAPI();
+                getGalleryFromAPI2();
             });
         </script>
     </body>
