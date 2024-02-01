@@ -46,6 +46,7 @@ const checkAnswer = function (questionIndex, answerIndex) {
     if (givenAnswer == correctAnswer) {
         console.log("✓ - Frage RICHTIG beantwortet!");
         // Gib der gewählten Antwort eine Farbe
+        // Wenn der Button den Fokus hat, also zB.: geklickt wurde
         $("#answers button:focus").css({
             "background-color": "green",
             color: "darkgreen",
@@ -61,6 +62,7 @@ const checkAnswer = function (questionIndex, answerIndex) {
     }
 
     // setze alle Buttons auf "disabled", damit nicht mehrfach geclicked werden kann
+    // Prop deaktiviert einen Button oder ein Input feld
     $("#answers button").prop("disabled", true);
 
     // warte 3 Sekunden bis die nächste Frage angezeigt wird
@@ -91,6 +93,7 @@ Event handler für dynamisch (in der zukunft)
 generierte Elemente (innerhalb von div#answer)
 */
 $("#answers").delegate("button.answer-btn", "click", function () {
+    // data index gibt den wert der Klasse "data-index" aus, welches im div platziert ist z.B.: <div data-index="22">Test</div>
     checkAnswer(currentQuestion, $(this).data("index"));
 });
 
