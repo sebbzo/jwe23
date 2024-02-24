@@ -53,6 +53,7 @@
         print_r($person);
         echo "</pre>";
 
+        //Mehrdimensionales Array (verschachtelt)
         $personen = array(
             array(
                 "name" => "Herbert",
