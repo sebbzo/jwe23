@@ -32,6 +32,7 @@ if($seite == "home") {
 }
 
 include "kopf.php";
+/* die("ENDE"); */
 include "inhalte/" . $include_datei;
 include "fuss.php";
 
