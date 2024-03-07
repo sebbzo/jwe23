@@ -21,9 +21,10 @@
     echo "</pre>";
 
     //HTML-Tags aus einem String entfernen
+    //Alle html Tags außer strong
     $text = "Das ist ein <strong>fett</strong> und <em>kursiv</em>.";
     echo $text. "</br>";
-    echo strip_tags($text, "<strong>");
+    echo strip_tags($text, "<strong>"); 
 
     //Länge eines Strings zählen
     echo strlen($text);

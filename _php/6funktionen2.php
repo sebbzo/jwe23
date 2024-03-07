@@ -22,15 +22,15 @@
         echo count($namen);
         echo "<br/>";
 
-        //Doppelten Namen entfernen
+        //Doppelten Namen aus der Liste entfernen
         $eindeutig = array_unique(
             $namen
         );
         print_r($eindeutig);
-        echo "<br/> haloo";
+        echo "<br/>";
         echo count($eindeutig);
 
-        //Prüpfen ob ein Wert im Array existiert
+        //Prüfen ob ein Wert im Array existiert
         $gesuchterName = "Peter";
         echo "<br/>";
         if (in_array($gesuchterName, $namen)) {
@@ -39,7 +39,7 @@
             echo "$gesuchterName ist nicht enthalten";
         }
 
-        //Aufsteigen nach Namen sortieren
+        //Aufsteigend nach Namen sortieren
         asort($eindeutig);
         echo "<br/>";
         print_r($eindeutig);

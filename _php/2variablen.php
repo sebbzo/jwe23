@@ -46,6 +46,11 @@
     echo "<br/>";
 
     //Eine Konstante definieren und verwenden
+    //Konstanten können zur Laufzeit des Skriptes nicht verändert werden
+    //1) erhöht die Lesbarkeit des Codes, weil sofort klar ist, dass sich dieser Wert nicht mehr ändert
+    //2) Schützt vor unbeabsichtigter Änderung von Werten
+    //3) Kann zentral verwalten werden
+    //4) Schützt vor magischen Zahlen oder Zeichenketten, die man schlecht versteht
     define("datenbank", "php23");
     echo datenbank;
     echo "<br/>";
