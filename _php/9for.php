@@ -25,6 +25,7 @@
         echo "<h1>Mal Tabelle</h1><br/>";
         echo "<table border='1'>";
         for ($i=1; $i <= 10; $i++) {
+            //Die Zeile 6 wird übersprungen
             if ($i==6) continue;
             echo "<tr>";
             for ($j=1; $j <= 10; $j++) { 

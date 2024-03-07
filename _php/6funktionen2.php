@@ -27,7 +27,7 @@
             $namen
         );
         print_r($eindeutig);
-        echo "<br/>";
+        echo "<br/> haloo";
         echo count($eindeutig);
 
         //Prüpfen ob ein Wert im Array existiert

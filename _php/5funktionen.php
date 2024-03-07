@@ -17,11 +17,11 @@
 
     //Leerzeichen vor/nach einem Text entfernen (Nur davor und nicht im Text)
     echo "<pre>";
-    echo trim($text, "n e"); //Das Leerzeichen und das n wird entfernt
+    echo trim($text, "n e"); //Das Leerzeichen und das e und n wird entfernt
     echo "</pre>";
 
     //HTML-Tags aus einem String entfernen
-    $text = "Das istÄ ein <strong>fett</strong> und <em>kursiv</em>.";
+    $text = "Das ist ein <strong>fett</strong> und <em>kursiv</em>.";
     echo $text. "</br>";
     echo strip_tags($text, "<strong>");
 
