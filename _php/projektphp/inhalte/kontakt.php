@@ -1,12 +1,12 @@
 <?php
 
-//echo "<pre>"; print_r($_POST); echo "</pre>";
+echo "<pre>"; print_r($_POST); echo "</pre>";
 
 $erfolg = false;
 $fehlermeldungen = array();
 
 
-//wurde das Formular abgeschickt?
+    //Das Formular wurde abgeschickt wenn $_Post nicht leer ist
     if (! empty($_POST))
     {
         //Validierung - wurde das Formular richtig ausgefüllt?
@@ -18,10 +18,11 @@ $fehlermeldungen = array();
         
         if (empty($_POST["email"])) {
             $fehlermeldungen[] = "Bitte geben Sie Ihre Email an.";
-        } else if (! preg_match("/^[a-z0-9]+@[a-z0-9]+\.[a-z]{2,15}$/", $_POST["email"])) {
+        } else if (! preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/', $_POST["email"])) {
             $fehlermeldungen[] = "Bitte prüfen Sie Ihre E-Mail.";
         };
 
+        //Prüffeld leer lassen
         if (!empty($_POST["prueffeld"])) {
             $fehlermeldungen[] = "Bitte das Prüffeld leer lassen. Sie sind bestimmt ein Roboter.";
         }
@@ -35,9 +36,9 @@ $fehlermeldungen = array();
             $erfolg = true;
             $mail_inhalt = "Anfrage über Kontaktformular:
                 
-Name: {$_POST["name"]}
-Email: {$_POST["email"]}
-Nachricht: {$_POST["message"]}
+            Name: {$_POST["name"]}
+            Email: {$_POST["email"]}
+            Nachricht: {$_POST["message"]}
 
 
             ";
@@ -96,6 +97,7 @@ Nachricht: {$_POST["message"]}
                     <form action="" method="post">
                         <div>
                             <input type="text" id="name" name="name" value="<?php 
+                                //Damit der Input nicht verloren geht, wenn man auf den Submit Button klickt
                                 if (!empty($_POST["name"]) ) {
                                     //Wenn man Gänsefüschen, Backslash und so eintippt, das das auch richtig angezeigt wird
                                     echo htmlspecialchars($_POST["name"]);

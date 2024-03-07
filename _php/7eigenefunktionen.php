@@ -23,7 +23,7 @@
         echo celsius_in_fahrenheit(15);
         echo "<br/>";
 
-        //Datum neu formatieren
+        //Aufgabe: Datum neu formatieren
 
         //Variante mit date
         $datum_mysql = "2024-02-24";
@@ -50,6 +50,7 @@
         echo "<br/>";
 
         //Weitere Variante
+        //explode: Teile trennen und in ein neues Array geben
         function de_datum_3($date) {
             $teile = explode('-', $date);
             return $teile[2] . "." . $teile[1] . "." . $teile[0];
@@ -59,7 +60,6 @@
         echo "<br/>";
 
         //Text nach 10 Zeichen abschneiden und "..." anhängen
-
         $text = "Lorem ipsum dolor";
         echo "<br/>";
 
@@ -71,9 +71,7 @@
                 return $text;
             }
         }
-
         echo text_shorten($text);
-    
     ?>
 </body>
 </html>
