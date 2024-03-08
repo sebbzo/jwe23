@@ -40,6 +40,8 @@ $fehlermeldungen = array();
             Email: {$_POST["email"]}
             Nachricht: {$_POST["message"]}
 
+            IP: {$_SERVER["REMOTE_ADDR"]}
+
 
             ";
         
