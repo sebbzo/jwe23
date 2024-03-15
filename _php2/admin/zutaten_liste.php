@@ -1,10 +1,12 @@
 <?php
 include "funktionen.php";
+ist_eingeloggt();
 
 include "kopf.php";
 ?>
 
 <h1>Zutaten</h1>
+<p><a href="zutaten_neu.php">Neue Zutat anlegen</a></p>
 
 <?php
     
@@ -23,13 +25,14 @@ include "kopf.php";
     echo "</tr>";
     echo "</thread>";
     echo "<tbody>";
-    while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr>";
-        echo "<td>". $row["titel"]."</td>";
-        echo "<td>". $row["kcal_pro_100"]."</td>";
-        echo "<td>". $row["menge"]."</td>";
-        echo "</tr>";
-    }
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>";
+            echo "<td>". $row["titel"]."</td>";
+            echo "<td>". $row["kcal_pro_100"]."</td>";
+            echo "<td>". $row["menge"]."</td>";
+            echo "</tr>";
+        }
 
     echo "</tbody>";
 
