@@ -5,27 +5,29 @@ ist_eingeloggt();
 
 $errors = array();
 
+$erfolg = false;
+
 //Prüfen ob das Formular abgeschickt wurde
 if (!empty($_POST)) {
 
     $sql_titel = escape($_POST["titel"]);
+    $sql_kcal_pro_100 = escape($_POST["kcal_pro_100"]);
+    $sql_menge = escape($_POST["menge"]);
+    $sql_einheit = escape($_POST["einheit"]);
 
     //Felder validieren
     if ( empty($_POST["titel"])) {
         $errors[] = "Bitte geben Sie einen Namen für die Zutat an.";
     } else {
-        $result = mysqli_query($db, "SELECT * FROM zutaten 
+        $result = query("SELECT * FROM zutaten 
         WHERE titel = '{$sql_titel}'");
+        
         $row = mysqli_fetch_assoc($result);
 
         if ($row) {
             $errors[] = "Diese Zutat existiert bereits!";
         }
 
-    }
-
-    if ( empty($_POST["kcal_pro_100"])) {
-        $errors[] = "Bitte geben Sie die Kalorien an.";
     }
 
     if ( empty($_POST["menge"])) {
@@ -36,18 +38,27 @@ if (!empty($_POST)) {
         $errors[] = "Bitte geben Sie die Einheit an.";
     }
 
+    //Fehler validieren
     if (empty($errors)) {
         //Überprüfen ob die Zutat schon existiert
         //Datenbank Zugriff und Abfrage
+
+        //Wenn nichts eingegeben wird, dann soll NULL in die Datenbank gespeichert werden
+        if ($sql_kcal_pro_100 == "") {
+            $sql_kcal_pro_100 = "NULL";
+        }
         
-        $result = mysqli_query($db, "SELECT * FROM zutaten 
+        $result = query("SELECT * FROM zutaten 
         WHERE titel = '{$sql_titel}'");
+        
         $row = mysqli_fetch_assoc($result);
 
-        mysqli_query($db, "INSERT INTO `zutaten`(`titel`, `menge`, `einheit`, `kcal_pro_100`) 
-        VALUES ('{$_POST["titel"]}','{$_POST["menge"]}','{$_POST["einheit"]}','{$_POST["kcal_pro_100"]}')");
+        query("INSERT INTO `zutaten`(`titel`, `menge`, `einheit`, `kcal_pro_100`) 
+        VALUES ('{$sql_titel}','{$sql_menge}','{$sql_einheit}',{$sql_kcal_pro_100})");
 
         echo "Die Zutat wurde in die Datenbank eingefügt!";
+
+        $erfolg = true;
 
     }
 }
@@ -70,6 +81,13 @@ include "kopf.php";
         }
         echo "</ul>";
     }
+
+        //Erfolgsmeldung
+        if ($erfolg) {
+            echo "<p>Zutat wurde erfolgreich angelegt.
+            <a href='zutaten_liste.php'><br>Zurück zur Liste</a>
+            </p>";
+        }
 ?>
 
     <form action="zutaten_neu.php" method="post">
@@ -89,7 +107,7 @@ include "kopf.php";
             <label for="einheit">Einheit:</label>
             <input type="text" name="einheit" id="einheit">
         </div>
-        <div>
+        <div class="submit-button">
             <button type="submit">Zutat anlegen</button>
         </div>
     </form>

@@ -1,4 +1,7 @@
+
 <?php
+
+include "kopf_fuer_login.php";
     session_start();
 
     //einer dieser drei Befehle würde schon reichen
