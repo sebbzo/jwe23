@@ -32,6 +32,7 @@ if (! empty($_POST)) {
 
                 $_SESSION["eingeloggt"] = true;
                 $_SESSION["benutzername"] = $row["benutzername"];
+                $_SESSION["benutzer_id"] = $row["id"];
 
                 //Anzahl Logins in DB speichern
                 //& Last Login (Uhrzeit) in der Datenbank speichern

@@ -1,3 +1,11 @@
+<!-- 
+//////////////////
+Neue Zutat anlegen
+(Formular erstellen mit Validierungen & 
+Daten in der Datenbank aktualisieren)
+//////////////////
+-->
+
 <?php
 
 include "funktionen.php";
@@ -19,6 +27,8 @@ if (!empty($_POST)) {
     if ( empty($_POST["titel"])) {
         $errors[] = "Bitte geben Sie einen Namen für die Zutat an.";
     } else {
+        //Überprüfen ob die Zutat schon existiert
+        //Datenbank Zugriff und Abfrage
         $result = query("SELECT * FROM zutaten 
         WHERE titel = '{$sql_titel}'");
         
@@ -27,7 +37,6 @@ if (!empty($_POST)) {
         if ($row) {
             $errors[] = "Diese Zutat existiert bereits!";
         }
-
     }
 
     if ( empty($_POST["menge"])) {
@@ -40,8 +49,7 @@ if (!empty($_POST)) {
 
     //Fehler validieren
     if (empty($errors)) {
-        //Überprüfen ob die Zutat schon existiert
-        //Datenbank Zugriff und Abfrage
+        
 
         //Wenn nichts eingegeben wird, dann soll NULL in die Datenbank gespeichert werden
         if ($sql_kcal_pro_100 == "") {
@@ -66,7 +74,6 @@ if (!empty($_POST)) {
 include "kopf.php";
 
 ?>
-
 
     <h1>Neue Zutat anlegen</h1>
 

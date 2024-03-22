@@ -1,3 +1,10 @@
+<!-- 
+//////////////////
+Verbindung zur Datenbank, Session für Eingeloggt,
+Kurzformen für Funktionen
+//////////////////
+-->
+
 <?php
 
 // ist notwendig um auf die Session Infos zugreifen zu können
@@ -22,7 +29,6 @@ function query($sql_befehl) {
 
     return $result;
 }
-
 
 //Diese Funktion überprüft, ob der Benutzer eingeloggt ist.
 //Falls nicht, dann wird er automatisch auf die Log-In Seite umgeleitet.

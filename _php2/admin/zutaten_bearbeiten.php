@@ -1,3 +1,11 @@
+<!-- 
+//////////////////
+Daten von der mitgeschickten Id erzeugen und im Formular vorausfüllen &
+Validierung (inkl. Prüfung ob Titel schon existiert in der DB) & 
+Zutaten überschreiben
+//////////////////
+-->
+
 <?php
 
 include "funktionen.php";
@@ -48,7 +56,12 @@ if (!empty($_POST)) {
             $sql_kcal_pro_100 = "NULL";
         }
 
-        query("UPDATE `zutaten` SET `titel`='{$sql_titel}',`menge`='{$sql_menge}',`einheit`='{$sql_einheit}',`kcal_pro_100`={$sql_kcal_pro_100} WHERE `id` = '{$sql_id}'");
+        query("UPDATE `zutaten` SET 
+        `titel`='{$sql_titel}',
+        `menge`='{$sql_menge}',
+        `einheit`='{$sql_einheit}',
+        `kcal_pro_100`={$sql_kcal_pro_100} 
+        WHERE `id` = '{$sql_id}'");
 
         $erfolg = true;
     }

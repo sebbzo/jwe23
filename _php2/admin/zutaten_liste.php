@@ -1,3 +1,12 @@
+<!-- 
+//////////////////
+Gibt eine Liste aus mit den Zutaten
+(Zugriff auf die Datenbank & 
+Ausgabe der Daten in einer While-Schleife &
+ID Weiterleitung auf Zutaten bearbeiten & Entfernen)
+//////////////////
+-->
+
 <?php
 include "funktionen.php";
 ist_eingeloggt();

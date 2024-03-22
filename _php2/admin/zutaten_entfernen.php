@@ -1,3 +1,10 @@
+<!-- 
+//////////////////
+Sicherheitsabfrage bei Löschung (inkl. Doit Parameter) &
+Überprüfung ob mit Rezept verbunden
+//////////////////
+-->
+
 <?php
 include "funktionen.php";
 ist_eingeloggt();
