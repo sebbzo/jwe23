@@ -17,48 +17,41 @@ if ( !empty($_POST)) {
     $sql_titel = escape($_POST["titel"]);
     $sql_beschreibung = escape($_POST["beschreibung"]);
 
-
-
     //Felder validieren
     if ( empty($sql_titel) ) {
         $errors[] = "Bitte geben Sie einen Namen für dieses Rezept an.";
     } 
 
-
     //Validierung - wenn keine Fehler dann in DB speichern
     if ( empty($errors)) {
 
-//echo "<pre>"; print_r($_POST); echo "</pre>";
-//die();
+    //echo "<pre>"; print_r($_POST); echo "</pre>";
+    //die();
 
+    //wenn kein Validierungsfehler --> DB speichern
+    query("UPDATE rezepte SET
+        titel = '{$sql_titel}',
+        beschreibung = '{$sql_beschreibung}',
+        benutzer_id = '{$sql_benutzer_id}' 
+        WHERE id = '{$sql_id}'
+    ");
     
-        //wenn kein Validierungsfehler --> DB speichern
-        query("UPDATE rezepte SET
-            titel = '{$sql_titel}',
-            beschreibung = '{$sql_beschreibung}',
-            benutzer_id = '{$sql_benutzer_id}' 
-            WHERE id = '{$sql_id}'
+    //Alle Zutaten-Zuordnungen löschen und neu anlegen
+    query("DELETE FROM zutaten_zu_rezepte WHERE rezepte_id = '{$sql_id}'");
+
+    //Zuordnung zu Zutaten anlegen
+    foreach ($_POST["zutaten_id"] as $zutatNr) {
+
+        if ( empty($zutatNr) ) continue;
+
+        $sql_zutaten_id = escape($zutatNr);
+
+        query("INSERT INTO zutaten_zu_rezepte SET
+            zutaten_id = '{$sql_zutaten_id}'
+            , rezepte_id = '{$sql_id}'
         ");
-        
-        //Alle Zutaten-Zuordnungen löschen und neu anlegen
-        query("DELETE FROM zutaten_zu_rezepte WHERE rezepte_id = '{$sql_id}'");
 
-        //Zuordnung zu Zutaten anlegen
-        foreach ($_POST["zutaten_id"] as $zutatNr) {
-
-            if ( empty($zutatNr) ) continue;
-
-            
-            $sql_zutaten_id = escape($zutatNr);
-
-            query("INSERT INTO zutaten_zu_rezepte SET
-                zutaten_id = '{$sql_zutaten_id}'
-                , rezepte_id = '{$sql_id}'
-            ");
-
-        }
-
-
+    }
         $erfolg = true;
     }
 
