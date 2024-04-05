@@ -22,6 +22,7 @@ $request_uri_ohne_get = explode("?", $_SERVER["REQUEST_URI"])[0];
 $teile = explode("/api/", $request_uri_ohne_get, 2);
 $parameter = explode("/", $teile[1]);
 
+// array_shift nimmt das erste Element aus dem Array raus und gibt es in eine neue Variable
 $api_version = ltrim(array_shift($parameter), "vV"); //kleines u. großes V auf der LINKEN Seite entfernen
 
 if (empty($api_version)) {
