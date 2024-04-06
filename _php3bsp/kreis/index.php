@@ -37,6 +37,7 @@ try {
     echo "Das wars wohl.<br>";
 }
 
+// Objekt löschen
 unset($k);
 
 echo "Letzte Ausgabe<br>";
