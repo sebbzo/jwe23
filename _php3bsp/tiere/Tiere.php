@@ -31,6 +31,7 @@ class Tiere implements TiereInterface, \Iterator {
     }
 
     // Iterator-Interface Implementierung
+    // damit kann man das Objekt als Liste auswerfen
     private int $index = 0;
 
     public function current(): mixed {

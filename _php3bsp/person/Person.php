@@ -26,7 +26,6 @@ class Person {
         return $this->vorname;
     }
 
-
     // Methode zum Ändern des privaten Vornamens
     // Ein sogenannter "setter"
     public function set_vorname($neuer_name) {

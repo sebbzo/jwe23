@@ -1,16 +1,31 @@
 <?php
 
-// Der Autoloader erhält Klassennamen (mit Namespace), die noch nicht included wurden.
-// Diesen können wir in einen Dateipfad umwandeln und die Datei danach einbinden.
-// Wird für jede Klasse bei der ersten Verwendung automatisch aufgerufen.
-// Namespaces kann man brauchen, wenn externe Klassen verwendet werden und 
-// damit diese sich nicht überschreiben mit den eigenen
+// Konfiguration für das Projekt
+const MYSQL_HOST = "localhost";
+const MYSQL_USER = "root";
+const MYSQL_PASSWORT = "";
+const MYSQL_DATENBANK = "php3";
+
+// Setup-Code: Nur verändern wenn du weißt, was du tust.
+
+
+
+session_start();
+
+function ist_eingeloggt() {
+    if (empty($_SESSION["eingeloggt"])) {
+        // Benutzer nicht eingeloggt -> Umleiten zum Login
+        header("Location: login.php");
+        exit;
+    }
+}
+
 spl_autoload_register(
     function (string $klasse) {
         // Projekt-spezifisches namespace prefix
         // Wir schreiben zwei Backslashes, damit der string nicht escaped wird.
-        // Also steht für WIFI\JWE\
-        $prefix = "WIFI\\JWE\\";
+        // Also steht für WIFI\Php3\
+        $prefix = "WIFI\\Php3\\";
 
         // Basisverzeichnis für das Projekt
         $basis = __DIR__ . "/";
@@ -35,25 +50,3 @@ spl_autoload_register(
         }
     }
 );
-
-use WIFI\JWE\Tier\Hund\Dogge;
-use WIFI\JWE\Tier\Katze;
-use WIFI\JWE\Tier\Maus;
-use WIFI\JWE\Tiere;
-
-$dogge = new Dogge("Spike");
-$katze = new Katze("Tom");
-$maus = new Maus("Jerry");
-
-$tiere = new Tiere();
-$tiere->add($dogge);
-$tiere->add($katze);
-$tiere->add($maus);
-$tiere->add(new Maus("Mickey"));
-
-echo $tiere->ausgabe();
-
-foreach ($tiere as $tier) {
-    echo "<br>";
-    echo $tier->get_name();
-}

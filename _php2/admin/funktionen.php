@@ -15,7 +15,6 @@ $db = mysqli_connect("localhost", "root", "", "php2");
 //MYSQLI mitteilen, dass unsere Befehle als utf8 kommen
 mysqli_set_charset($db, "utf8");
 
-
 //Funktion um SQL-Injektionen zu vermeiden
 function escape($post_var) {
     global $db; //Funktion von außen reinholen
@@ -26,7 +25,6 @@ function escape($post_var) {
 function query($sql_befehl) {
     global $db;
     $result = mysqli_query($db, $sql_befehl);
-
     return $result;
 }
 

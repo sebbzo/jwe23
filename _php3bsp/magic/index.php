@@ -20,4 +20,3 @@ $m->speichern("benutzer", "insert", 5);
 echo $m;
 
 echo "<br>";
-print_r($m);
