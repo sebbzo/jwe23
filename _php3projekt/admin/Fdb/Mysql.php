@@ -4,10 +4,21 @@ namespace WIFI\Php3\Fdb;
 
 class Mysql {
 
+    // Singleton Implementierung
+    private static ?Mysql $instanz = null;
+
+    public static function getInstanz(): Mysql {
+        if (!self::$instanz) {
+            self::$instanz = new Mysql();
+        }
+        return self::$instanz;
+    }
+    // Singleton Implementierung ENDE
+
     // Jede Klasse ist gleichzeitig ein Datentyp
     private \mysqli $db;
 
-    public function __construct() {
+    private function __construct() {
         $this->verbinden();
     }
 
@@ -20,6 +31,7 @@ class Mysql {
         $this->db->set_charset('utf8mb4');
     }
 
+    //Funktion um SQL-Injektionen zu vermeiden
     public function escape(string $wert): string {
         return $this->db->real_escape_string($wert);
     }

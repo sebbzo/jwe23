@@ -14,7 +14,7 @@ if (! empty($_POST)) {
 
     if (!$validieren->fehler_aufgetreten()) {
         // weiter machen mit einloggen
-        $db = new Mysql();
+        $db = Mysql::getInstanz();
         $sql_benutzername = $db->escape($_POST["benutzername"]);
         $ergebnis = $db->query("SELECT * FROM benutzer WHERE benutzer = '{$sql_benutzername}'");
         $benutzer = $ergebnis->fetch_assoc();
@@ -61,6 +61,10 @@ if(!empty($validieren)) {
     <div>
         <label for="benutzername">Benutzername</label>
         <input type="text" name="benutzername" id="benutzername">
+    </div>
+    <div>
+        <label for="passwort">Passwort</label>
+        <input type="password" name="passwort" id="passwort">
     </div>
     <div>
         <label for="passwort">Passwort</label>

@@ -15,6 +15,34 @@ class Validieren {
         return true;
     }
 
+    public function ist_kennzeichen(string $wert, string $feldname): bool {
+        // nach irgendeinem Zeichen im Kennwort suchen, das NICHT A-Z, 0-9, oder Bindestrich ist.
+        if (preg_match("/[^A-Z0-9\-]/i", $wert)) {
+            $this->errors[] = "Im " . $feldname . " sind nur Buchstaben, Zahlen und Minus erlaubt.";
+            return false;
+        }
+        // auf korrekte Länge prüfen
+        if (strlen($wert) > 8 || strlen($wert) < 3) {
+            $this->errors[] = "Die Länge von " . $feldname . " ist falsch.";
+            return false;
+        }
+        return true;
+    }
+
+    public function ist_baujahr(string $wert, string $feldname): bool {
+        // Auf Zahlen prüfen
+        if (!is_numeric($wert)) {
+            $this->errors[] = "Im " . $feldname . " sind nur Zahlen erlaubt.";
+            return false;
+        }
+        // Datum darf nicht in der Zukunft liegen
+        if ($wert > date("Y") || $wert <= 1890) {
+            $this->errors[] = $feldname . " muss größer als 1890 und darf nicht in der Zukunft liegen.";
+            return false;
+        }
+        return true;
+    }
+
     public function fehler_aufgetreten(): bool {
         if (empty($this->errors)) {
             return false;
