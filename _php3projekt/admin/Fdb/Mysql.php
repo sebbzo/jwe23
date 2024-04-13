@@ -5,6 +5,9 @@ namespace WIFI\Php3\Fdb;
 class Mysql {
 
     // Singleton Implementierung
+    //Vermeidet mehrfache Erstellung des selben Objekts.
+    // Hier gewünscht, um nicht mehrere Datenbank-Verbindungen
+    // (Über den Konstruktor) gleichzeitig aufzubauen
     private static ?Mysql $instanz = null;
 
     public static function getInstanz(): Mysql {
