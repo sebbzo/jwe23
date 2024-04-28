@@ -21,7 +21,7 @@ if (! empty($_POST)) {
         $ergebnis = $db->query("SELECT * FROM benutzer WHERE benutzername = '{$sql_benutzername}'");
         $benutzer = $ergebnis->fetch_assoc();
 
-        if (empty($benutzer) || !password_verify($_POST["passwort"], $benutzer["passwort"])) { 
+        if (empty($benutzer) || $_POST["passwort"] != $benutzer["passwort"]) {  //|| !password_verify($_POST["passwort"], $benutzer["passwort"])
 
             // Passwort falsch oder Benutzer existiert nicht in DB
             $validieren->fehler_hinzu("Benutzer oder Passwort war falsch.");

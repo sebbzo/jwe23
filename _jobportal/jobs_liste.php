@@ -1,6 +1,6 @@
 <!-- 
 //////////////////
-Fahrzeuge ausgeben
+Stellenanzeigen ausgeben
 //////////////////
 -->
 
@@ -9,38 +9,37 @@ Fahrzeuge ausgeben
 include "setup.php";
 ist_eingeloggt();
 
-use WIFI\Jobportal\Fdb\Model\Fahrzeuge;
+use WIFI\Jobportal\Fdb\Model\Jobs;
 
 ?>
 
-<h1>Fahrzeug-Liste</h1>
+<h1>Stellenanzeigen Liste</h1>
 
 <?php
 
-    echo "<p><a href='fahrzeuge_bearbeiten.php'>Fahrzeuge bearbeiten</a></p>";
+    echo "<p><a href='jobs_bearbeiten.php'>Stellenanzeigen Bearbeiten</a></p>";
     echo "<table border='1'>";
 
     echo "<thread>";
     echo "<tr>";
-        echo "<th>Kennzeichen</th>";
-        echo "<th>Marke</th>";
-        echo "<th>Farbe</th>";
-        echo "<th>Baujahr</th>";
+        echo "<th>Titel</th>";
+        echo "<th>Beschreibung</th>";
+        echo "<th>Erstellt am:</th>";
     echo "</tr>";
     echo "</thread>";
     echo "<tbody>";
 
-    $fahrzeuge = new Fahrzeuge();
-    $alle_fahrzeuge = $fahrzeuge->alle_fahrzeuge(); // gibt "Fahrzeug" Objekte als Array zurück
+    $jobs = new Jobs();
+    $alle_jobs = $jobs->alle_jobs(); // gibt "Job" Objekte als Array zurück
 
-    foreach ($alle_fahrzeuge as $auto) {
+    foreach ($alle_jobs as $job) {
         echo "<tr>";
-            echo "<td>" . $auto->kennzeichen . "</td>";
-            echo "<td>" . $auto->get_marke()->marke . "</td>";
-            echo "<td>" . $auto->farbe . "</td>";
-            echo "<td>" . $auto->baujahr . "</td>";
-            echo "<td>"."<a href='fahrzeuge_bearbeiten.php?id={$auto->id}'>Bearbeiten</a>"."</td>";
-            echo "<td>"."<a href='fahrzeuge_entfernen.php?id={$auto->id}'>Entfernen</a>"."</td>";
+            echo "<td>" . $job->kennzeichen . "</td>";
+            echo "<td>" . $job->get_marke()->marke . "</td>";
+            echo "<td>" . $job->farbe . "</td>";
+            echo "<td>" . $job->baujahr . "</td>";
+            echo "<td>"."<a href='fahrzeuge_bearbeiten.php?id={$job->id}'>Bearbeiten</a>"."</td>";
+            echo "<td>"."<a href='fahrzeuge_entfernen.php?id={$job->id}'>Entfernen</a>"."</td>";
         echo "</tr>";
 
 
