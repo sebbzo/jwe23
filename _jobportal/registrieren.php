@@ -1,42 +1,41 @@
 <?php
 
+error_reporting(E_ALL);
+
 include "setup.php";
 
 use WIFI\Jobportal\Fdb\Validieren;
 use WIFI\Jobportal\Fdb\Mysql;
+
+
 
 // Formular abgeschickt
 if (! empty($_POST)) {
 
     //Formularfelder validieren
     $validieren = new Validieren();
+    
     $validieren->ist_ausgefuellt($_POST["benutzername"], "Benutzername");
     $validieren->ist_ausgefuellt($_POST["passwort"], "Passwort");
+    $validieren->benutzername_existiert($_POST["benutzername"]);
 
     if (!$validieren->fehler_aufgetreten()) {
 
-        // Verbindung zu Datenbank aufbauen
+        // PASSWORT HASH ERSTELLEN
+
+        //Ist ein Einweg-Hashing-Algorithmus und kann nicht mehr zurückverfolgt werden
+        $pw_hash = password_hash($_POST["passwort"], PASSWORD_DEFAULT);
+
+        //Verbindung zu Datenbank aufbauen
         $db = Mysql::getInstanz();
         $sql_benutzername = $db->escape($_POST["benutzername"]);
-        $ergebnis = $db->query("SELECT * FROM benutzer WHERE benutzername = '{$sql_benutzername}'");
-        $benutzer = $ergebnis->fetch_assoc();
+        $sql_passwort = $db->escape($pw_hash);
+        
+        $db->query("INSERT INTO `benutzer`(`benutzername`, `passwort`) VALUES ('{$sql_benutzername}','{$sql_passwort}')");
 
-        if (empty($benutzer) || !password_verify($_POST["passwort"], $benutzer["passwort"])) {
+        echo "Ein neuer Account wurde erstellt. Bitte melde dich nochmal an.<br>";
+        echo '<a href="login.php">Zurück zum Login</a>';
 
-            // Passwort falsch oder Benutzer existiert nicht in DB
-            $validieren->fehler_hinzu("Benutzer oder Passwort war falsch.");
-            
-        } else {
-
-            // Alles ok -> Login Session merken
-            $_SESSION["eingeloggt"] = true;
-            $_SESSION["benutzername"] = $benutzer["benutzer"];
-            $_SESSION["benutzer_id"] = $benutzer["id"];
-
-            // Umleitung zum Admin-System
-            header("Location: index.php");
-            exit;
-        }
     }
 }
 
@@ -51,18 +50,19 @@ if (! empty($_POST)) {
 </head>
 <body>
 
-<h1>Loginbereich für Arbeitgeber</h1>
+<h1>Neues Konto erstellen</h1>
 
 <?php
 
 // Fehler ausgeben
 if(!empty($validieren)) {
     echo $validieren->fehler_html();
+    echo "hallo";
 }
 
 ?>
 
-<form action="login.php" method="post">
+<form action="registrieren.php" method="post">
     <div>
         <label for="benutzername">Benutzername</label>
         <input type="text" name="benutzername" id="benutzername">
@@ -72,12 +72,10 @@ if(!empty($validieren)) {
         <input type="password" name="passwort" id="passwort">
     </div>
     <div class="submit-button">
-        <button type="submit">Einloggen</button>
+        <button type="submit">Registrieren</button>
 
     </div>
 </form>
-
-<a href="registrieren.php">Neues Konto erstellen</a>
     
 </body>
 </html>

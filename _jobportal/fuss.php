@@ -1,6 +1,6 @@
         <footer>
             <hr>
-            &copy; Fahrzeug-DB, Sebastian Oberreiter
+            &copy; Job-DB, Sebastian Oberreiter
         </footer>
     </body>
 </html>

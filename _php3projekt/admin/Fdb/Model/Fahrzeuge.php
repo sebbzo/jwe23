@@ -12,6 +12,7 @@ class Fahrzeuge {
         $ergebnis = $db->query("SELECT * FROM fahrzeuge ORDER BY id ASC");
         while ($row = $ergebnis->fetch_assoc()) {
             $alle_fahrzeuge[] = new Fahrzeug($row);
+            echo "Hallo";
         }
         return $alle_fahrzeuge;
     }

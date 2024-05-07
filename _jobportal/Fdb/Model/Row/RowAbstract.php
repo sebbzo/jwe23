@@ -13,11 +13,13 @@ abstract class RowAbstract {
             // Fertiges Array wurde übergeben, verwenden wie gegeben.
             $this->daten = $id_oder_daten;
         } else {
-            //id wurde übergeben, Daten aus Datenbank auslesen.
+            //id wurde übergeben, Daten aus Datenbank auslesen und im Array speichern
+            
             $db = Mysql::getInstanz();
             $sql_id = $db->escape($id_oder_daten);
             $ergebnis = $db->query("SELECT * FROM {$this->tabelle} WHERE id = '{$sql_id}'");
             $this->daten = $ergebnis->fetch_assoc();
+            
         }
     }
 
@@ -36,7 +38,7 @@ abstract class RowAbstract {
         $db->query("DELETE FROM {$this->tabelle} WHERE id = '{$sql_id}'");
     }
 
-    public function speichern(): void {
+    /*public function speichern(): void {
 
         $db = Mysql::getInstanz();
         $sql_felder = "";
@@ -60,12 +62,12 @@ abstract class RowAbstract {
         } else {
             // in DB einfügen
             $db->query("INSERT INTO {$this->tabelle} SET {$sql_felder}");
-        }
+        }*/
 
         /*Würde so aussehen: query("INSERT INTO rezepte SET
         titel = '{$sql_titel}',
         beschreibung = '{$sql_beschreibung}',
         benutzer_id = '{$sql_benutzer_id}'
         ");*/
-    }
+    //}
 }

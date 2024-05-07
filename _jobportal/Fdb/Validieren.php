@@ -2,6 +2,7 @@
 
 // Namespace besteht aus Firma und dann dem Projektnamen
 namespace WIFI\Jobportal\Fdb;
+use WIFI\Jobportal\Fdb\Mysql;
 
 class Validieren {
 
@@ -15,7 +16,7 @@ class Validieren {
         return true;
     }
 
-    public function ist_kennzeichen(string $wert, string $feldname): bool {
+    /*public function ist_kennzeichen(string $wert, string $feldname): bool {
         // nach irgendeinem Zeichen im Kennwort suchen, das NICHT A-Z, 0-9, oder Bindestrich ist.
         if (preg_match("/[^A-Z0-9\-]/i", $wert)) {
             $this->errors[] = "Im " . $feldname . " sind nur Buchstaben, Zahlen und Minus erlaubt.";
@@ -41,7 +42,7 @@ class Validieren {
             return false;
         }
         return true;
-    }
+    }*/
 
     public function fehler_aufgetreten(): bool {
         if (empty($this->errors)) {
@@ -68,5 +69,24 @@ class Validieren {
 
     public function fehler_hinzu(string $fehler):void {
         $this->errors[] = $fehler;
+    }
+
+    public function benutzername_existiert(string $benutzername): bool {
+
+        $db = Mysql::getInstanz();
+        $ergebnis = $db->query("SELECT * FROM benutzer");
+
+       
+
+        while ($row = $ergebnis->fetch_assoc()) {
+
+            if ($row["benutzername"] == $benutzername) {
+                $this->errors[] = "Dieser Benutzername existiert bereits!"; 
+                return true;
+            }
+
+        }
+        return false;
+
     }
 }
