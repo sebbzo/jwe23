@@ -8,6 +8,7 @@ class Mysql {
     //Vermeidet mehrfache Erstellung des selben Objekts.
     // Hier gewünscht, um nicht mehrere Datenbank-Verbindungen
     // (Über den Konstruktor) gleichzeitig aufzubauen
+    
     private static ?Mysql $instanz = null;
 
     public static function getInstanz(): Mysql {
@@ -16,6 +17,7 @@ class Mysql {
         }
         return self::$instanz;
     }
+
     // Singleton Implementierung ENDE
 
     // Jede Klasse ist gleichzeitig ein Datentyp
@@ -29,7 +31,9 @@ class Mysql {
         // Mysqli-Objekt (von PHP) erstellen und DB-Verbindung aufbauen
         // PHP hat mysqli auf der obersten Ebene definiert, deshalb der Backslash vor mysqli
         // Das new mysqli kommt von der PHP-Dokumentation und ist für Klassen anders als für prozedurale
+
         $this->db = new \mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORT, MYSQL_DATENBANK);
+
         // Zeichensatz mitteilen, in dem wir mit der DB sprechen wollen
         $this->db->set_charset('utf8mb4');
     }
@@ -40,6 +44,7 @@ class Mysql {
     }
 
     public function query(string $input): \mysqli_result|bool {
+        //objektorientierte Schreibweise
         $ergebnis = $this->db->query($input);
         return $ergebnis;
     }

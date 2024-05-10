@@ -59,6 +59,7 @@ use WIFI\Jobportal\Fdb\Model\Jobs;
             echo "<td>" . $job->stundenausmass . "</td>";
             echo "<td>" . $job->gehalt . "</td>";
             echo "<td>" . $job->get_kategorie()->kategorie . "</td>"; 
+            
             //Magic Method mit dem passenden Kategorie Objekt, bei dem die Kategorie Eigenschaft ausgelesen wird
             echo "<td>" . $job->datum . "</td>";
             echo "<td>" . $job->get_benutzer()->benutzername . "</td>";
