@@ -1,11 +1,9 @@
-<!-- 
-//////////////////
+<?php
+
+/*
 Verbindung zur Datenbank, Session für Eingeloggt,
 Kurzformen für Funktionen
-//////////////////
--->
-
-<?php
+*/
 
 // ist notwendig um auf die Session Infos zugreifen zu können
 session_start();

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JSON API</title>
+    </head>
+    <body>
+        <div id="gallery">
+            <!-- Data from JSON API -->
+        </div>
+
+        <button id="load">Load</button>
+
+        <img src="" alt="" />
+
+        <script src="vendor/jquery/jquery-3.7.1.min.js"></script>
+        <script>
+            const url = "http://localhost/jwe23/_jobportal/api/jobs";
+
+            $.getJSON();
+
+            let getJobsFromAPI = function () {
+                let htmlOut = "";
+                $.getJSON(url, function (data) {
+
+                    $(data).each(function (index, entry) {
+                        
+                        entry.result.forEach(element => {
+                            // Element = Objekt
+                            htmlOut += element.titel;
+                        });
+
+                    });
+                    $("#gallery").html(htmlOut);
+                });
+            };
+
+            $("#load").on("click", function () {
+                getJobsFromAPI();
+            });
+        </script>
+    </body>
+</html>

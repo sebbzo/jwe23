@@ -1,5 +1,5 @@
 RewriteEngine On
 
-RewriteBase /jwe23/_php2/
+RewriteBase /jwe23/_jobportal/
 
 RewriteRule ^\/?api\/? api.php
