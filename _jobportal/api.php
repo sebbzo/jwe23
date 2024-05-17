@@ -24,13 +24,6 @@ $request_uri_ohne_get = explode("?", $_SERVER["REQUEST_URI"])[0];
 $teile = explode("/api/", $request_uri_ohne_get, 2);
 $parameter = explode("/", $teile[1]);
 
-// array_shift nimmt das erste Element aus dem Array raus und gibt es in eine neue Variable
-/*$api_version = ltrim(array_shift($parameter), "vV"); //kleines u. großes V auf der LINKEN Seite entfernen
-
-if (empty($api_version)) {
-    fehler("Bitte geben Sie eine API-Version an.");
-}*/
-
 //Leere Einträge aus Parameter-Array entfernen
 foreach ($parameter as $k => $v) {
     if (empty($v)) {
@@ -56,7 +49,7 @@ $db = Mysql::getInstanz();
 
 if ($parameter[0] == "jobs") {
 
-    if (!empty($parameter[1])) {
+    if (!empty($parameter[1]) && ($parameter[1] != "list")) {
         //ID wurde übergeben
         $ausgabe = array(
             "status" => 1,
@@ -93,7 +86,7 @@ if ($parameter[0] == "jobs") {
         echo json_encode($ausgabe); //Umwandlung eines Arrays in JSON
         exit;
 
-    } else {
+    } elseif ($parameter[1] == "list") {
         //Liste aller Jobs
         $ausgabe = array(
             "status" => 1,
@@ -114,7 +107,7 @@ if ($parameter[0] == "jobs") {
 } elseif ($parameter[0] == "categories") {
 
 
-    if (!empty($parameter[1]) && empty($parameter[2])) {
+    if (!empty($parameter[1]) && empty($parameter[2]) && ($parameter[1] != "list")) {
         //ID wurde übergeben
         $ausgabe = array(
             "status" => 1,
@@ -170,7 +163,7 @@ if ($parameter[0] == "jobs") {
 
     }
 
-     else {
+     else if ($parameter[1] == "list") {
         //Liste aller Kategorien
         $ausgabe = array(
             "status" => 1,
