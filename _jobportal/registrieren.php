@@ -3,6 +3,7 @@
 error_reporting(E_ALL);
 
 include "setup.php";
+include "kopf-frontend.php";
 
 use WIFI\Jobportal\Fdb\Validieren;
 use WIFI\Jobportal\Fdb\Mysql;
@@ -77,5 +78,8 @@ if(!empty($validieren)) {
     </div>
 </form>
     
-</body>
-</html>
+<?php
+
+include "fuss.php";
+
+?>

@@ -1,6 +1,7 @@
 <?php
 
 include "setup.php";
+include "kopf-frontend.php";
 
 use WIFI\Jobportal\Fdb\Validieren;
 use WIFI\Jobportal\Fdb\Mysql;
@@ -79,5 +80,6 @@ if(!empty($validieren)) {
 
 <a href="registrieren.php">Neues Konto erstellen</a>
     
-</body>
-</html>
+<?php
+include "fuss.php";
+?>

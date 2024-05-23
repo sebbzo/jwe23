@@ -154,7 +154,7 @@ if ($parameter[0] == "jobs") {
         exit;
     }
 
-    if (!empty($parameter[2])) {
+    else if (!empty($parameter[2])) {
 
         // Liste aller Jobs zu einer gewissen Kategorie
 
@@ -189,6 +189,29 @@ if ($parameter[0] == "jobs") {
         }
 
         echo json_encode($ausgabe);// Umwandlung eines Arrays in JSON
+        exit;
+    }
+} elseif ($parameter[0] == "location") {
+
+     if ($parameter[1] == "list") {
+        //Liste aller Kategorien
+        $ausgabe = array(
+            "status" => 1,
+            "result" => array()
+        );
+        
+        $result = $db->query("SELECT dienstort FROM jobs ORDER BY id ASC");
+
+        $dienstorte = array(); // Array zum Speichern der bereits hinzugefügten Dienstorte
+        
+        while($row = mysqli_fetch_assoc($result)) {
+            if (!in_array($row["dienstort"], $dienstorte)) { // Überprüfen, ob der Dienstort bereits in der Liste ist
+                $ausgabe["result"][] = $row;
+                $dienstorte[] = $row["dienstort"]; // Dienstort zur Liste der hinzugefügten Dienstorte hinzufügen
+            }
+        }
+        
+        echo json_encode($ausgabe); // Umwandlung eines Arrays in JSON
         exit;
     }
 } else {

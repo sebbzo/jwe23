@@ -4,9 +4,11 @@ Session löschen & Logout
 //////////////////
 -->
 
+
 <?php
 
     session_start();
+    include "kopf-frontend.php";
 
     //einer dieser drei Befehle würde schon reichen
     unset($_SESSION["eingeloggt"]);
@@ -29,5 +31,10 @@ Session löschen & Logout
     <h1>Logout aus der Fahrzeug-DB</h1>
     <p>Sie wurden ausgeloggt.</p>
     <p><a href="login.php">Hier gehts zurück zum Login</a></p>
-</body>
-</html>
+
+
+<?php
+
+include "fuss.php";
+
+?>

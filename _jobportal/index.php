@@ -6,7 +6,7 @@ ist_eingeloggt();
 //Entfernt das Session-Cookie
 //unset($_SESSION["eingeloggt"]);
 
-include "kopf.php";
+include "kopf-backend.php";
 ?>
 <h1>Administration Job-DB</h1>
 <p>Willkommen im geheimen Admin-Bereich</p>
