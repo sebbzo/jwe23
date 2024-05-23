@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JavaScript Prüfung</title>
+
+        <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/index.css" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="row">
+                <div class="col m-5">
+                    <div class="tresor p-5">
+                        <input
+                            type="number"
+                            class="code-input-field"
+                            name="code_input_field"
+                            placeholder="Hier Code einfügen"
+                        />
+
+                        <div class="center">
+                            <button class="btn btn-primary mt-3">Öffnen</button>
+                        </div>
+
+                        <input
+                            type="text"
+                            class="feedback-output mt-5 w-100"
+                            name="feedback_output"
+                            placeholder="Warten auf Code..."
+                            disabled
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="vendor/bootstrap/bootstrap.min.js"></script>
+        <script src="vendor/jquery/jquery-3.7.1.min.js"></script>
+        <script src="js/safe.js"></script>
+    </body>
+</html>

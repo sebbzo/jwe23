@@ -1,0 +1,24 @@
+.tresor {
+    background-color: #39393a;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    border: 4px solid #272727;
+}
+
+input {
+    margin: auto;
+    display: block;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    background-color: #9ad5ca !important;
+    border: 0px;
+    color: black;
+}

@@ -1,8 +1,21 @@
 <?php
 
+
+/* 
+Hier wird die API erschaffen. 
+Unter folgenden Pfaden werden gewisse Daten ausgespielt.
+- /api/jobs/list - Ausgabe aller aktiven Jobs als Übersicht
+- /api/jobs/123 - Ausgabe aller Detailinformationen des Jobs mit ID 123 inkl. der Kategorie(n).
+- api/categories/list - Ausgabe aller Kategorie Informationen
+- /api/categories/123 - Ausgabe aller Detailinformationen der Kategorie mit ID 123
+- /api/categories/123/jobs - Ausgabe aller Jobs die zu der Kategorie mit ID 123 gehören (wie liste)
+
+http://localhost/jwe23/_jobportal/api/...
+
+*/
+
 use WIFI\Jobportal\Fdb\Mysql;
 
-//Es wird unbedingt benötigt, bei include nur wenn es gebraucht wird
 include "setup.php";
 
 //Schaltet auf eine andere Gestaltung
@@ -185,5 +198,5 @@ if ($parameter[0] == "jobs") {
 
 echo "Das API funktioniert!";
 
-// http://localhost/jwe23/_php2/api/jobs
+
 ?>

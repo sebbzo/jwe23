@@ -31,7 +31,7 @@ $(myList).each(function (i, product) {
     console.log(product);
 });
 
-const addNewProduct = function () {
+/*const addNewProduct = function () {
     let value = $("#new-product").val();
 
     let filteredList = myList.filter(function (article) {
@@ -51,16 +51,16 @@ const addNewProduct = function () {
     $("#new-product").val("").focus();
 };
 
-$("#add-product").on("click", addNewProduct);
+$("#add-product").on("click", addNewProduct);*/
 
-$("#new-product").on("keyup", function (e) {
+/*$("#new-product").on("keyup", function (e) {
     console.log(e.keyCode);
 
     // Enter wurde gedrückt
     if (e.keyCode == 13) {
         addNewProduct();
     }
-});
+});*/
 
 const prependNewProduct = function (index, product) {
     $("#product-list")
@@ -109,7 +109,7 @@ const filterList = function () {
     let filteredList = myList.filter(function (article) {
         return article.toLowerCase().includes(value);
     });
-
+    console.log("Hu");
     showFilteredList(filteredList);
 };
 
