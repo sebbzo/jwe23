@@ -1,10 +1,10 @@
 // Jobs ausgeben
 
-const url = "http://localhost/jwe23/_jobportal/api/categories/list";
+const jobUrl = "http://localhost/jwe23/_jobportal/api/categories/list";
 let jobList = [];
 
 let getJobsFromAPI = function () {
-    $.getJSON(url, function (data) {
+    $.getJSON(jobUrl, function (data) {
         data.result.forEach((element) => {
             jobList.push(element.kategorie);
         });
@@ -63,8 +63,8 @@ const filterList = function () {
     // Filtert die Liste der Jobs (jobList) anhand des Werts im Eingabefeld
     // Überprüft, ob jeder Job (article) den eingegebenen Wert (value) enthält
     // Die Artikel werden in Kleinbuchstaben umgewandelt, um die Suche nicht case-sensitiv zu machen
-    let filteredList = jobList.filter(function (article) {
-        return article.toLowerCase().includes(value);
+    let filteredList = jobList.filter(function (job) {
+        return job.toLowerCase().includes(value);
     });
 
     showFilteredList(filteredList);
@@ -73,19 +73,13 @@ const filterList = function () {
 // Jedes Mal, wenn eine Taste losgelassen wird, wird die Funktion filterList aufgerufen
 $("#search-job").on("keyup", filterList);
 
-//
-//
-//
 // Orte ausgeben
-//
-//
-//
 
-const url2 = "http://localhost/jwe23/_jobportal/api/location/list";
+const locationUrl = "http://localhost/jwe23/_jobportal/api/location/list";
 let locationList = [];
 
 let getLocationFromAPI = function () {
-    $.getJSON(url2, function (data) {
+    $.getJSON(locationUrl, function (data) {
         data.result.forEach((element) => {
             locationList.push(element.dienstort);
         });
@@ -144,8 +138,8 @@ const filterLocationList = function () {
     // Filtert die Liste der Orte (locationList) anhand des Werts im Eingabefeld
     // Überprüft, ob jeder Ort (article) den eingegebenen Wert (value) enthält
     // Die Artikel werden in Kleinbuchstaben umgewandelt, um die Suche nicht case-sensitiv zu machen
-    let filteredList = locationList.filter(function (article) {
-        return article.toLowerCase().includes(value);
+    let filteredList = locationList.filter(function (location) {
+        return location.toLowerCase().includes(value);
     });
 
     showFilteredLocationList(filteredList);

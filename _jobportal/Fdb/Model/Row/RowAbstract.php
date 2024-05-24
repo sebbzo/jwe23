@@ -23,6 +23,7 @@ abstract class RowAbstract {
         }
     }
 
+    // Eingenschaft ausgeben, die übergeben wurde
     public function __get(string $eigenschaft): mixed {
 
         // Exception werfen wenn die Spalte nicht existiert
@@ -38,36 +39,4 @@ abstract class RowAbstract {
         $db->query("DELETE FROM {$this->tabelle} WHERE id = '{$sql_id}'");
     }
 
-    /*public function speichern(): void {
-
-        $db = Mysql::getInstanz();
-        $sql_felder = "";
-
-        foreach ($this->daten as $spaltenname => $wert) {
-            if ($spaltenname == "id") { // spaltenname "id" nie updaten oder inserten
-                continue;
-            }
-            $sql_wert = $db->escape($wert);
-            $sql_felder .= "{$spaltenname} = '{$wert}', "; 
-        }
-
-        // Letztes Komma entfernen
-        $sql_felder = rtrim($sql_felder, ", ");
-
-        // In DB einfügen
-        if (!empty($this->daten["id"])) {
-            // in DB bearbeiten
-            $sql_id = $db->escape($this->daten["id"]);
-            $db->query("UPDATE {$this->tabelle} SET {$sql_felder} WHERE id = '{$sql_id}'");
-        } else {
-            // in DB einfügen
-            $db->query("INSERT INTO {$this->tabelle} SET {$sql_felder}");
-        }*/
-
-        /*Würde so aussehen: query("INSERT INTO rezepte SET
-        titel = '{$sql_titel}',
-        beschreibung = '{$sql_beschreibung}',
-        benutzer_id = '{$sql_benutzer_id}'
-        ");*/
-    //}
 }

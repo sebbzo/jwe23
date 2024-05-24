@@ -1,4 +1,4 @@
-
+            </div>
             <footer
                 class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 px-5 border-top"
             >
@@ -38,6 +38,7 @@
                 </ul>
             </footer>
         </div>
+
 
         
         <script src="vendor/jquery/jquery-3.7.1.min.js"></script>

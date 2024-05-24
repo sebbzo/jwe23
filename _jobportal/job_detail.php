@@ -14,7 +14,7 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
 }
 
 // Job-ID aus der URL abrufen und gegen SQL-Injection absichern
-$job_id = (int)$_GET['id'];
+$job_id = $_GET['id'];
 
 // Datenbankverbindung herstellen
 $db = Mysql::getInstanz();
@@ -27,8 +27,8 @@ $job_result = $db->query("
     WHERE jobs.id = '{$job_id}' AND jobs.sichtbar = 'ja'
 ");
 
-
 // Prüfen, ob ein Job gefunden wurde
+// $job_result->num_rows ist eine Methode in PHP, die die Anzahl der Zeilen im Ergebnis einer Datenbankabfrage zurückgibt.
 if ($job_result->num_rows == 0) {
     echo "Kein Job mit dieser ID gefunden.";
     exit;
@@ -65,7 +65,7 @@ if (!empty($_POST)) {
 ?>
 
 <main>
-    <div class="inner-wrapper">
+    <div class="container mt-5">
         <h1><?php echo htmlspecialchars($job['titel']); ?></h1>
         <p><strong>Ort:</strong> <?php echo htmlspecialchars($job['dienstort']); ?></p>
         <p><strong>Stundenausmaß:</strong> <?php echo htmlspecialchars($job['stundenausmass']); ?></p>
@@ -79,27 +79,28 @@ if (!empty($_POST)) {
 
         <?php
         if ($erfolg) {
-            echo "<p><strong>Bewerbung erfolgreich gesendet.</strong></p>";
+            echo "<div class='alert alert-success'><strong>Bewerbung erfolgreich gesendet.</strong></div>";
         } else {
             if (!empty($validieren)) {
-                echo "<strong>Folgende Fehler sind aufgetreten:</strong>";
+                echo "<div class='alert alert-danger'><strong>Folgende Fehler sind aufgetreten:</strong>";
                 echo $validieren->fehler_html();
+                echo "</div>";
             }
         ?>
 
         <h2>Bewerben</h2>
         <form action="" method="post">
-            <div class="form-group">
-                <label for="name">Name:</label>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label>
                 <input type="text" class="form-control" id="name" name="name" value="<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name']) : ''; ?>">
             </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
                 <input type="email" class="form-control" id="email" name="email" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
             </div>
-            <div class="form-group">
-                <label for="message">Nachricht:</label>
-                <textarea class="form-control" id="message" name="message"><?php echo isset($_POST['message']) ? htmlspecialchars($_POST['message']) : ''; ?></textarea>
+            <div class="mb-3">
+                <label for="message" class="form-label">Nachricht:</label>
+                <textarea class="form-control" id="message" name="message" rows="5"><?php echo isset($_POST['message']) ? htmlspecialchars($_POST['message']) : ''; ?></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Bewerbung senden</button>
         </form>

@@ -1,4 +1,5 @@
 <?php
+
 include "setup.php";
 
 use WIFI\Jobportal\Fdb\Mysql;
@@ -7,13 +8,17 @@ use WIFI\Jobportal\Fdb\Mysql;
 function deaktiviere_alte_jobs() {
     
     $db1 = Mysql::getInstanz();
+    
 
     $result = $db1->query("SELECT `id`, `aenderungsdatum` FROM `jobs`");
+    
 
     while ($row = $result->fetch_assoc()) {
         $jobId = $row["id"];
+        
         $jobDate = $row["aenderungsdatum"];
         $sql_id = $db1->escape($jobId);
+        
 
         // Aktuelles Datum vor 3 Monaten berechnen
         $dateThreeMonthsAgo = date('Y-m-d H:i:s', strtotime('-3 months'));
@@ -23,7 +28,10 @@ function deaktiviere_alte_jobs() {
             $db1->query("UPDATE jobs SET sichtbar='nein' WHERE id = '{$sql_id}'");
         }
     }
+    
 }
+
+
 
 // Jobs löschen, die vor 1 Jahr oder länger bearbeitet wurden
 function loesche_alte_jobs() {
@@ -49,10 +57,22 @@ function loesche_alte_jobs() {
 // Funktion zum Ausführen der Aufgaben
 function aktualisiere_und_loesche_jobs() {
     deaktiviere_alte_jobs();
+    
     loesche_alte_jobs();
     echo "Jobs wurden erfolgreich aktualisiert und gelöscht.";
 }
 
 // Aktualisierung und Löschung der Jobs aufrufen
 aktualisiere_und_loesche_jobs();
+
+// CRONTAB EINSTELLEN
+/*
+
+Terminal: Befehl crontab -e und folgendes einfügen (Hier wird es jedes Mal zu Mitternacht aktualisiert):
+
+0 0 * * * /Applications/XAMPP/bin/php /Applications/XAMPP/xamppfiles/htdocs/jwe23/_jobportal/job_automatische_deaktivierung.php >/dev/null 2>&1
+
+*/
+
 ?>
+

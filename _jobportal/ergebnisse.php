@@ -41,21 +41,23 @@ $searchLocationPlaceholder = isset($_SESSION['search-location']) ? htmlspecialch
             }
             ?>
 
-            <!-- SUCHFORMULAR -->
-            <form action="ergebnisse.php" method="post">
+
+        <!-- SUCHFORMULAR -->
+        <form action="home.php" method="post" class="my-5">
                 <div class="input-group">
                     <div class="search-field-1">
                         <input
                             type="text"
                             class="form-control"
                             value="<?php echo $searchJobPlaceholder; ?>"
+                            placeholder="Suche nach einem Jobbereich"
                             aria-label="Job suchen"
                             aria-describedby="search-product"
                             id="search-job"
                             name="search-job"
                         />
                         <div id="job-list" class="overflow-auto">
-                            <!-- Here comes dynamic HTML -->
+                            <!-- Hier kommt dynamisches HTML -->
                         </div>
                     </div>
                     <div class="search-field-2">
@@ -63,18 +65,20 @@ $searchLocationPlaceholder = isset($_SESSION['search-location']) ? htmlspecialch
                             type="text"
                             class="form-control"
                             value="<?php echo $searchLocationPlaceholder; ?>"
+                            placeholder="Suche nach einem Ort"
                             aria-label="Ort suchen"
                             aria-describedby="search-location"
                             id="search-location"
                             name="search-location"
+                            
                         />
                         <div id="location-list" class="overflow-auto">
-                            <!-- Here comes dynamic HTML -->
+                            <!-- Hier kommt dynamisches HTML -->
                         </div>
                     </div>
                     <div class="search-field-button">
                         <button
-                            class="btn btn-outline-secondary search-button"
+                            class="btn btn-primary search-button"
                             type="submit"
                             id="send"
                         >
@@ -83,6 +87,7 @@ $searchLocationPlaceholder = isset($_SESSION['search-location']) ? htmlspecialch
                     </div>
                 </div>
             </form>
+
         </div>
     </div>
 </main>
@@ -98,39 +103,31 @@ $db = Mysql::getInstanz();
 $sql_kategorie = $db->escape($_SESSION["search-job"]);
 $sql_dienstort = $db->escape($_SESSION["search-location"]);
 
-// SQL-Abfrage zur Suche nach Kategorien, die der Benutzereingabe entsprechen
-$ergebnis_kategorie = $db->query("SELECT id FROM kategorien WHERE kategorie LIKE '%{$sql_kategorie}%'");
-
-$ergebnis_jobs_daten = []; // Initialisiere das Array, um die Job-Daten zu speichern
-
-// Schleife durch die Ergebnismenge der Kategorien
-while ($row = $ergebnis_kategorie->fetch_assoc()) {
-    // SQL-Abfrage zur Suche nach Jobs, die zur aktuellen Kategorie-ID passen und sichtbar sind
-    $ergebnis_jobs = $db->query("SELECT id, titel, dienstort, beschreibung FROM jobs WHERE kategorie_id = '" . $row['id'] . "' AND sichtbar = 'ja'");
-    
-    // Schleife durch die Ergebnismenge der Jobs
-    while ($job = $ergebnis_jobs->fetch_assoc()) {
-        // Füge jeden gefundenen Job zum Array hinzu
-        $ergebnis_jobs_daten[] = $job;
-    }
-}
+// SQL-Abfrage zur Suche nach Jobs, die der Benutzereingabe entsprechen und sichtbar sind
+$sql_query = "SELECT jobs.id, jobs.titel, jobs.dienstort, jobs.beschreibung, kategorien.kategorie 
+              FROM jobs 
+              INNER JOIN kategorien ON jobs.kategorie_id = kategorien.id 
+              WHERE kategorien.kategorie LIKE '%{$sql_kategorie}%' 
+              AND jobs.sichtbar = 'ja' AND jobs.dienstort LIKE '%{$sql_dienstort}%'";
+$ergebnis_jobs = $db->query($sql_query);
 
 echo "<div class='row'>";
 
-if (empty($ergebnis_jobs_daten)) {
+if ($ergebnis_jobs->num_rows == 0) {
     echo "<div class='col-md-12'>";
     echo "Es wurden leider keine passenden Jobs gefunden! Probiere eine andere Suchanfrage.";
     echo "</div>";
 } else {
-    // Iteriere über das Array von Job-Daten und gib sie aus
-    foreach ($ergebnis_jobs_daten as $row) {
+    // Iteriere über das Ergebnis der SQL-Abfrage und gib die Jobs aus
+    while ($row = $ergebnis_jobs->fetch_assoc()) {
         $job_id = $row['id'];
         echo "<div class='col-md-4'>";
         echo "<div class='card m-2'>";
         echo "<div class='card-body'>";
         echo "<h3 class='card-title'>" . htmlspecialchars($row["titel"]) . "</h3>";
-        echo "<p class='card-subtitle'>" . htmlspecialchars($row["dienstort"]) . "</p>";
+        echo "<p class='card-text'>" . htmlspecialchars($row["dienstort"]) . "</p>";
         echo "<p class='card-text'>" . htmlspecialchars($row["beschreibung"]) . "</p>";
+        echo "<p class='card-text'><strong>Kategorie:</strong> " . htmlspecialchars($row["kategorie"]) . "</p>"; // Ausgabe der Kategorie
         echo "<a href='job_detail.php?id={$job_id}' class='btn btn-primary'>Mehr erfahren</a>"; // Link zum Job-Detail
         echo "</div></div></div>";
     }

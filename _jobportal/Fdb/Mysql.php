@@ -5,9 +5,9 @@ namespace WIFI\Jobportal\Fdb;
 class Mysql {
 
     // Singleton Implementierung
-    //Vermeidet mehrfache Erstellung des selben Objekts.
+    // Vermeidet mehrfache Erstellung desselben Objekts.
     // Hier gewünscht, um nicht mehrere Datenbank-Verbindungen
-    // (Über den Konstruktor) gleichzeitig aufzubauen
+    // (über den Konstruktor) gleichzeitig aufzubauen
     
     private static ?Mysql $instanz = null;
 
@@ -27,6 +27,7 @@ class Mysql {
         $this->verbinden();
     }
 
+    // Funktion zum Herstellen der Verbindung zur Datenbank
     public function verbinden() {
         // Mysqli-Objekt (von PHP) erstellen und DB-Verbindung aufbauen
         // PHP hat mysqli auf der obersten Ebene definiert, deshalb der Backslash vor mysqli
@@ -38,13 +39,15 @@ class Mysql {
         $this->db->set_charset('utf8mb4');
     }
 
-    //Funktion um SQL-Injektionen zu vermeiden
+    // Funktion, um SQL-Injektionen zu vermeiden, indem Zeichen escaped werden
     public function escape(string $wert): string {
         return $this->db->real_escape_string($wert);
     }
 
+    // Funktion zum Ausführen von SQL-Abfragen
+    // Gibt das Ergebnis als mysqli_result-Objekt zurück oder false bei Fehler
     public function query(string $input): \mysqli_result|bool {
-        //objektorientierte Schreibweise
+        // Objektorientierte Schreibweise
         $ergebnis = $this->db->query($input);
         return $ergebnis;
     }

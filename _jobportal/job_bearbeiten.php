@@ -11,7 +11,7 @@ use WIFI\Jobportal\Fdb\Mysql;
 
 $erfolg = false;
 
-if (! empty($_POST)) {
+if (!empty($_POST)) {
 
     $validieren = new Validieren();
 
@@ -52,160 +52,84 @@ if (! empty($_POST)) {
 
 ?>
 
-<h1>Job bearbeiten</h1>
+<div class="container mt-5">
+    <h1>Job bearbeiten</h1>
 
-<?php
+    <?php if ($erfolg): ?>
+        <div class="alert alert-success" role="alert">
+            <strong>Job wurde bearbeitet</strong><br>
+            <a href='jobs_liste.php' class="alert-link">Zurück zur Liste</a>
+        </div>
+    <?php endif; ?>
 
-if ($erfolg) {
-    echo "<p><strong>Job wurde bearbeitet</strong><br>
-    <a href='jobs_liste.php'>Zurück zur Liste</a></p>";
-}
+    <?php if (!empty($validieren)): ?>
+        <div class="alert alert-danger" role="alert">
+            <?php echo $validieren->fehler_html(); ?>
+        </div>
+    <?php endif; ?>
 
-if(!empty($validieren)) {
-    echo $validieren->fehler_html();
-}
+    <?php if (!empty($_GET["id"])): 
+        //Bearbeiten-Modus - Fehrzeugdaten ermitteln zum Formular vorausfüllen
+        $job = new Job($_GET["id"]);
+    endif; ?>
 
-if (!empty($_GET["id"])) {
-    //Bearbeiten-Modus - Fehrzeugdaten ermitteln zum Formular vorausfüllen
-    $job = new Job($_GET["id"]);
-}
+    <form action="job_bearbeiten.php<?php if (!empty($job)) echo "?id=" . $job->id; ?>" method="post">
+        <div class="mb-3">
+            <label for="titel" class="form-label">Jobtitel</label>
+            <input type="text" class="form-control" name="titel" id="titel" value="<?php echo !empty($_POST["titel"]) ? htmlspecialchars($_POST["titel"]) : (!empty($job) ? htmlspecialchars($job->titel) : ''); ?>">
+        </div>
 
-?>
+        <div class="mb-3">
+            <label for="beschreibung" class="form-label">Beschreibung</label>
+            <textarea class="form-control" name="beschreibung" id="beschreibung" cols="30" rows="10"><?php echo !empty($_POST["beschreibung"]) ? htmlspecialchars($_POST["beschreibung"]) : (!empty($job) ? htmlspecialchars($job->beschreibung) : ''); ?></textarea>
+        </div>
 
-<form action="job_bearbeiten.php<?php 
-    if (!empty($job)) {
-     echo "?id=" . $job->id;
-    }
-    ?>" method="post">
-    <div>
-        <label for="titel">Jobtitel</label>
-        <input type="text" name="titel" id="titel" value="<?php
-            if (!empty($_POST["titel"])) {
-                echo htmlspecialchars($_POST["titel"]);
-            } 
+        <div class="mb-3">
+            <label for="qualifikation" class="form-label">Qualifikation</label>
+            <input type="text" class="form-control" name="qualifikation" id="qualifikation" value="<?php echo !empty($_POST["qualifikation"]) ? htmlspecialchars($_POST["qualifikation"]) : (!empty($job) ? htmlspecialchars($job->qualifikation) : ''); ?>">
+        </div>
 
-            // Wenn noch nichts neues eingefügt wurde oder das Feld leer ist, dann soll der wirkliche Jobtitel ausgegeben werden
-            
-            else if (!empty($job)) {
-                echo htmlspecialchars($job->titel);
-            }
-        ?>">
-    </div>
+        <div class="mb-3">
+            <label for="dienstort" class="form-label">Dienstort</label>
+            <input type="text" class="form-control" name="dienstort" id="dienstort" value="<?php echo !empty($_POST["dienstort"]) ? htmlspecialchars($_POST["dienstort"]) : (!empty($job) ? htmlspecialchars($job->dienstort) : ''); ?>">
+        </div>
 
-    <div>
-        <label for="beschreibung">Beschreibung</label>
-        <textarea name="beschreibung" id="beschreibung" cols="30" rows="10"><?php
-            if (!empty($_POST["beschreibung"])) {
-                echo htmlspecialchars($_POST["beschreibung"]);
-            } 
+        <div class="mb-3">
+            <label for="stunden" class="form-label">Stundenaussmaß</label>
+            <input type="text" class="form-control" name="stunden" id="stunden" value="<?php echo !empty($_POST["stunden"]) ? htmlspecialchars($_POST["stunden"]) : (!empty($job) ? htmlspecialchars($job->stundenausmass) : ''); ?>">
+        </div>
 
-            // Wenn noch nichts neues eingefügt wurde oder das Feld leer ist, dann soll der wirkliche Jobtitel ausgegeben werden
-            
-            else if (!empty($job)) {
-                echo htmlspecialchars($job->beschreibung);
-            }
-        ?></textarea>
-    </div>
+        <div class="mb-3">
+            <label for="gehalt" class="form-label">Gehalt</label>
+            <input type="text" class="form-control" name="gehalt" id="gehalt" value="<?php echo !empty($_POST["gehalt"]) ? htmlspecialchars($_POST["gehalt"]) : (!empty($job) ? htmlspecialchars($job->gehalt) : ''); ?>">
+        </div>
 
-    <div>
-        <label for="qualifikation">Qualifikation</label>
-        <input type="text" name="qualifikation" id="qualifikation" value="<?php
-            if (!empty($_POST["qualifikation"])) {
-                echo htmlspecialchars($_POST["qualifikation"]);
-            } 
-
-            // Wenn noch nichts neues eingefügt wurde oder das Feld leer ist, dann soll der wirkliche Jobtitel ausgegeben werden
-            
-            else if (!empty($job)) {
-                echo htmlspecialchars($job->qualifikation);
-            }
-        ?>">
-    </div>
-
-    <div>
-        <label for="dienstort">Dienstort</label>
-        <input type="text" name="dienstort" id="dienstort" value="<?php
-            if (!empty($_POST["dienstort"])) {
-                echo htmlspecialchars($_POST["dienstort"]);
-            } 
-
-            // Wenn noch nichts neues eingefügt wurde oder das Feld leer ist, dann soll der wirkliche Jobtitel ausgegeben werden
-            
-            else if (!empty($job)) {
-                echo htmlspecialchars($job->dienstort);
-            }
-        ?>">
-    </div>
-
-    <div>
-        <label for="stunden">Stundenaussmaß</label>
-        <input type="text" name="stunden" id="stunden" value="<?php
-            if (!empty($_POST["stunden"])) {
-                echo htmlspecialchars($_POST["stunden"]);
-            } 
-
-            // Wenn noch nichts neues eingefügt wurde oder das Feld leer ist, dann soll der wirkliche Jobtitel ausgegeben werden
-            
-            else if (!empty($job)) {
-                echo htmlspecialchars($job->stundenausmass);
-            }
-        ?>">
-    </div>
-
-    <div>
-        <label for="gehalt">Gehalt</label>
-        <input type="text" name="gehalt" id="gehalt" value="<?php
-            if (!empty($_POST["gehalt"])) {
-                echo htmlspecialchars($_POST["gehalt"]);
-            } 
-
-            // Wenn noch nichts neues eingefügt wurde oder das Feld leer ist, dann soll der wirkliche Jobtitel ausgegeben werden
-            
-            else if (!empty($job)) {
-                echo htmlspecialchars($job->gehalt);
-            }
-        ?>">
-    </div>
-
-    <div>
-        <label for="kategorie">Kategorie</label>
-        <select name="kategorie" id="kategorie">
-            <option value="">--Bitte wählen--</option>
-            <?php
-
+        <div class="mb-3">
+            <label for="kategorie" class="form-label">Kategorie</label>
+            <select class="form-select" name="kategorie" id="kategorie">
+                <option value="">--Bitte wählen--</option>
+                <?php
                 $kategorien = new Kategorien();
                 $alle_kategorien = $kategorien->alle_kategorien();
 
                 foreach ($alle_kategorien as $kategorie) {
-
-                    // Kategorie ID ausgeben
                     echo "<option value='{$kategorie->id}'";
-
-                    //Dieser Teil prüft, ob die aktuelle Kategorie mit der aus dem Formular übermittelten Kategorie übereinstimmt. Wenn ja, wird das Attribut "selected" hinzugefügt, um diese Option als vorausgewählt zu markieren.
-
-
                     if (!empty($_POST["kategorie"]) && ($_POST["kategorie"]) == $kategorie->id) {
                         echo " selected";
-                    } 
-
-                    //  Hier wird überprüft, ob ein bearbeiteter Job vorhanden ist und ob die Kategorie dieses Jobs mit der aktuellen Kategorie übereinstimmt. Wenn ja, wird auch das Attribut "selected" hinzugefügt.
-                    
-                    else if (!empty($job) && $job->kategorie_id == $kategorie->id) {
+                    } else if (!empty($job) && $job->kategorie_id == $kategorie->id) {
                         echo " selected";
                     }
-
                     echo ">{$kategorie->kategorie}</option>";
-
                 };
+                ?>
+            </select>
+        </div>
 
-            ?>
-        </select>
-    </div>
-
-    <div class="submit-button">
-        <button type="submit">Job speichern</button>
-    </div> 
-</form>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Job speichern</button>
+        </div>
+    </form>
+</div>
 
 <?php
 

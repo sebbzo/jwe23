@@ -7,10 +7,9 @@ use WIFI\Jobportal\Fdb\Mysql;
 $db = Mysql::getInstanz();
 
 echo "<main>
-    
-
-<div class='inner-wrapper'>
-    <h1>Kategorien entdecken</h1>";
+<div class='container'> <!-- Container zur Begrenzung des Inhalts -->
+    <div class='inner-wrapper'>
+        <h1>Kategorien entdecken</h1>";
 
 // SQL-Abfrage zur Suche nach allen sichtbaren Jobs für alle Kategorien und sortiere sie nach dem Datum aufsteigend
 $ergebnis_kategorien = $db->query("SELECT id, kategorie FROM kategorien");

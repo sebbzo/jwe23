@@ -14,9 +14,9 @@ use WIFI\Jobportal\Fdb\Model\Kategorien;
 
 <?php
 
-echo "<table border='1'>";
+echo "<table class='table table-striped'>"; // Bootstrap-Klasse für Tabellen-Styling hinzugefügt
 
-echo "<thead>";
+echo "<thead class='thead-dark'>"; // Bootstrap-Klasse für dunklen Tabellenkopf hinzugefügt
 echo "<tr>";
     echo "<th>ID</th>";
     echo "<th>Kategoriename</th>";
@@ -41,9 +41,9 @@ foreach ($alle_kategorien as $kategorie) {
         echo "<td>" . $kategorie->id . "</td>";
         echo "<td>" . $kategorie->kategorie . "</td>";
         // Wenn der Benutzer die id 1 hat, dann die Links zum Bearbeiten und Entfernen anzeigen
-        if ($_SESSION["benutzer_id"] == 9) {
-            echo "<td>"."<a href='kategorie_bearbeiten.php?id={$kategorie->id}'>Bearbeiten</a>"."</td>";
-            echo "<td>"."<a href='kategorie_entfernen.php?id={$kategorie->id}'>Entfernen</a>"."</td>";
+        if ($_SESSION["benutzer_id"] == 9) { // Vermutlich sollte hier die Benutzer-ID "root" überprüft werden, nicht 9
+            echo "<td>"."<a href='kategorie_bearbeiten.php?id={$kategorie->id}' class='btn btn-primary'>Bearbeiten</a>"."</td>"; // Bootstrap-Klassen für Button-Styling hinzugefügt
+            echo "<td>"."<a href='kategorie_entfernen.php?id={$kategorie->id}' class='btn btn-danger'>Entfernen</a>"."</td>"; // Bootstrap-Klassen für Button-Styling hinzugefügt
         }
     echo "</tr>";
 }

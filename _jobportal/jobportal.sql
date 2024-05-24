@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Erstellungszeit: 24. Mai 2024 um 15:34
+-- Erstellungszeit: 25. Mai 2024 um 00:31
 -- Server-Version: 10.4.28-MariaDB
 -- PHP-Version: 8.0.28
 
@@ -38,9 +38,9 @@ CREATE TABLE `benutzer` (
 --
 
 INSERT INTO `benutzer` (`id`, `benutzername`, `passwort`) VALUES
-(6, 'bernhard', '$2y$10$ni8ec3X.21kIvVgTJqkNv.ZfwcTEE.i6tZ6QQJp6xfN9HIkBBwzge'),
-(7, 'lukas', '$2y$10$f1RPLU45pTmAIC14yhqgBeloGytil5EIFU.hslVKVV8gfEp54TsNS'),
-(8, 'thomas', '$2y$10$3E4MuhUVRpSmVSDQih8hXuodMpuk4TvPHgnyPryZzSRRrCmO94k1m'),
+(6, 'sebob2', '$2y$10$ni8ec3X.21kIvVgTJqkNv.ZfwcTEE.i6tZ6QQJp6xfN9HIkBBwzge'),
+(7, 'sebob', '$2y$10$f1RPLU45pTmAIC14yhqgBeloGytil5EIFU.hslVKVV8gfEp54TsNS'),
+(8, 'sebob3', '$2y$10$3E4MuhUVRpSmVSDQih8hXuodMpuk4TvPHgnyPryZzSRRrCmO94k1m'),
 (9, 'root', '$2y$10$mDQqqR2nqkLjSpl.Dchpf.NhVel5b3YLpYz0i.LC0gahuBj8/HKA.');
 
 -- --------------------------------------------------------
@@ -69,9 +69,11 @@ CREATE TABLE `jobs` (
 --
 
 INSERT INTO `jobs` (`id`, `titel`, `beschreibung`, `qualifikation`, `dienstort`, `stundenausmass`, `gehalt`, `kategorie_id`, `benutzer_id`, `datum`, `sichtbar`, `aenderungsdatum`) VALUES
-(1, 'Webentwickler:in', 'Beschreibung', 'Studium oder FH', 'Salzburg', '40', '2800', 5, 7, '2024-05-04 00:00:00', 'ja', '2024-05-24 13:54:32'),
-(2, 'Vertriebsinnendienst', 'Rechnungen erstellen und Kontakt mit Außendienstmitarbeitern.', 'Ausbildung', 'Salzburg', '40', '2800', 1, 7, '2024-05-04 10:09:43', 'nein', '2024-05-24 00:00:00'),
-(3, 'xcvfhj', 'xcvghjfg', 'cv', 'xxckhhh', 'xcv', 'xcv', 1, 7, '2024-05-04 13:37:32', 'ja', '2024-05-24 00:00:00');
+(7, 'FullStack Web-Entwickler (m/w)', 'to>day is your day! \r\nTO>DAY Experts Oberösterreich GmbH ist ein österreichisches Projektberatungsunternehmen, das sich auf ExpertInnen im IT-Bereich spezialisiert hat. Wir suchen laufend hochqualifizierte und erfahrene IT-Fachkräfte.', 'Abgeschlossene IT-Ausbildung oder fachspezifische Berufserfahrung', 'Salzburg', '38h', '2.600,- € / Monat', 17, 9, '2024-05-24 22:55:13', 'ja', '2024-05-25 00:13:55'),
+(8, 'Grafikdesigner (m/w/d)', 'Kreatives Team sucht dich!', 'Ausbildung/Berufserfahrung im Bereich Grafik- & Mediendesign', 'Wien', '38,5h', '2.700,- € / Monat', 16, 7, '2024-05-24 22:55:13', 'ja', '2024-05-25 00:13:55'),
+(9, 'Kellner mit Inkasso (m/w/d)', 'Für unseren Kunde, ein familiengeführtes Gasthaus/Hotel, suchen wir für den Standort Großgmain bei Salzburg einen motivierten Kellner mit Inkasso.', 'abgeschlossene Ausbildung als Restaurantfachmann/frau oder einschlägige Berufserfahrung', 'Klagenfurt', '45h/Woche', '4.00,- € / Monat', 18, 6, '2024-05-24 22:55:13', 'ja', '2024-05-25 00:13:55'),
+(10, 'Sales- und Marketingleiter*in (m/w/d)', 'Du bist ein kreativer Kopf mit Verkaufsgeschick und Erfahrungen im Bereich Marketing? Unser 4-Sterne-Hotel mit Schwerpunkt Gesundheit, Wellness und Seminaren sucht ab sofort eine/n engagierte/n Sales- und Marketingleiter*in (m/w/d) mit frischen Ideen.', 'Erfahrung im Sales & Marketing', 'Bad Leonfelden', 'Vollzeit, Teilzeit', '2537,00 / Monat', 20, 8, '2024-05-24 22:55:13', 'ja', '2024-05-25 00:13:55'),
+(11, 'Senior Lead Developer (w/m/d)', 'Wir verstärken unsere Teams an den Standorten Linz und Innsbruck und suchen einen Senior Lead Developer (w/m/d) auf Basis einer modernen Microservice-Architektur.', 'Du verfügst über sehr gute Kenntnisse in der Software-Architektur und bringst Leadership Skills mit', 'Linz', '40h / Woche', '70.000,00 € brutto / Jahr', 19, 9, '2024-05-24 22:55:13', 'ja', '2024-05-25 00:13:55');
 
 -- --------------------------------------------------------
 
@@ -89,23 +91,11 @@ CREATE TABLE `kategorien` (
 --
 
 INSERT INTO `kategorien` (`id`, `kategorie`) VALUES
-(1, 'Bau'),
-(2, 'Bergbau / Rohstoffe / Glas / Keramik / Stein'),
-(3, 'Büro / Marketing / Finanz / Recht / Sicherheit'),
-(4, 'Chemie / Biotechnologie / Lebensmittel / Kunststoffe'),
-(5, 'Elektrotechnik / Elektronik / Telekommunikation / IT'),
-(6, 'Handel / Logistik / Verkehr'),
-(7, 'Landwirtschaft / Gartenbau / Forstwirtschaft'),
-(8, 'Maschinenbau / Kfz / Metall'),
-(9, 'Medien / Grafik / Design / Druck / Kunst / Kunsthandwerk'),
-(10, 'Reinigung / Hausbetreuung / Anlern- und Hilfsberufe'),
-(11, 'Soziales / Gesundheit / Schönheitspflege'),
-(12, 'Textil und Bekleidung / Mode / Leder'),
-(13, 'Tourismus / Gastgewerbe / Freizeit'),
-(14, 'Umwelt'),
-(15, 'Wissenschaft / Bildung / Forschung und Entwicklung'),
-(16, 'Webentwickler'),
-(17, 'Elektriker');
+(16, 'Grafikdesigner:in'),
+(17, 'Webentwickler:in'),
+(18, 'Kellner:in'),
+(19, 'Programmierer:in'),
+(20, 'Marketing-Spezialist:in');
 
 --
 -- Indizes der exportierten Tabellen
@@ -146,13 +136,13 @@ ALTER TABLE `benutzer`
 -- AUTO_INCREMENT für Tabelle `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT für Tabelle `kategorien`
 --
 ALTER TABLE `kategorien`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Constraints der exportierten Tabellen
@@ -162,8 +152,8 @@ ALTER TABLE `kategorien`
 -- Constraints der Tabelle `jobs`
 --
 ALTER TABLE `jobs`
-  ADD CONSTRAINT `Benutzer ID` FOREIGN KEY (`benutzer_id`) REFERENCES `benutzer` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `Kategorie ID` FOREIGN KEY (`kategorie_id`) REFERENCES `kategorien` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `Benutzer ID` FOREIGN KEY (`benutzer_id`) REFERENCES `benutzer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `Kategorie ID` FOREIGN KEY (`kategorie_id`) REFERENCES `kategorien` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,40 +1,25 @@
-<!-- 
-//////////////////
-Session löschen & Logout
-//////////////////
--->
-
 
 <?php
-
     session_start();
     include "kopf-frontend.php";
 
-    //einer dieser drei Befehle würde schon reichen
+    // Löscht die spezifische Session-Variable für den eingeloggten Benutzer
     unset($_SESSION["eingeloggt"]);
 
-    //Löscht alle vorhandenen Sessions
+    // Löscht alle zuvor gesetzten Session-Variablen, behält aber die Session selbst bei
     session_unset();
 
-    //Vernichtet die Session samt Cookies
+    // Beendet die aktuelle Session und löscht alle Session-Daten samt Cookies
     session_destroy();
 ?>
 
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logout aus der Fahrzeug-DB</title>
-</head>
-<body>
-    <h1>Logout aus der Fahrzeug-DB</h1>
-    <p>Sie wurden ausgeloggt.</p>
-    <p><a href="login.php">Hier gehts zurück zum Login</a></p>
 
+    <div class="container">
+        <h1 class="mt-5">Logout aus der Fahrzeug-DB</h1>
+        <p>Sie wurden ausgeloggt.</p>
+        <p><a href="login.php" class="btn btn-primary">Hier gehts zurück zum Login</a></p>
+    </div>
 
 <?php
-
 include "fuss.php";
-
 ?>

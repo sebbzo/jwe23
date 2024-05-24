@@ -13,18 +13,18 @@ $erfolg = false;
 if (!empty($_POST)) {
     $validieren = new Validieren();
 
+    // Überprüfen, ob das Feld "Kategorie" ausgefüllt ist
     $validieren->ist_ausgefuellt($_POST["kategorie"], "Kategorie");
 
     if (!$validieren->fehler_aufgetreten()) {
-        
+        // Verbindung zur Datenbank herstellen
         $db = Mysql::getInstanz();
         $sql_kategorie = $db->escape($_POST["kategorie"]);
 
-        // Hier kommt der Code zum Aktualisieren der Kategorie in der Datenbank
-        // Ähnlich wie beim Aktualisieren des Jobs in deinem vorherigen Code
-        
+        // SQL-Abfrage zum Aktualisieren der Kategorie
         $update_query = "UPDATE `kategorien` SET `kategorie`='{$sql_kategorie}' WHERE `id`='{$_GET["id"]}'";
 
+        // Ausführen der SQL-Abfrage
         if ($db->query($update_query)) {
             $erfolg = true;
         } else {
@@ -40,8 +40,8 @@ if (!empty($_POST)) {
 <?php
 
 if ($erfolg) {
-    echo "<p><strong>Kategorie wurde bearbeitet</strong><br>
-    <a href='kategorien_liste.php'>Zurück zur Liste</a></p>";
+    echo "<p class='alert alert-success'><strong>Kategorie wurde bearbeitet</strong><br>
+    <a href='kategorien_liste.php' class='btn btn-primary'>Zurück zur Liste</a></p>";
 }
 
 if (!empty($validieren)) {
@@ -56,13 +56,13 @@ $kategorie = $db->query("SELECT `kategorie` FROM `kategorien` WHERE `id`='$id'")
 ?>
 
 <form action="kategorie_bearbeiten.php?id=<?php echo $_GET["id"]; ?>" method="post">
-    <div>
+    <div class="form-group">
         <label for="kategorie">Kategorie</label>
-        <input type="text" name="kategorie" id="kategorie" value="<?php echo htmlspecialchars($kategorie); ?>">
+        <input type="text" name="kategorie" id="kategorie" class="form-control" value="<?php echo htmlspecialchars($kategorie); ?>">
     </div>
 
-    <div class="submit-button">
-        <button type="submit">Kategorie speichern</button>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Kategorie speichern</button>
     </div>
 </form>
 
