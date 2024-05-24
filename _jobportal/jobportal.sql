@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Erstellungszeit: 11. Mai 2024 um 08:38
+-- Erstellungszeit: 24. Mai 2024 um 15:34
 -- Server-Version: 10.4.28-MariaDB
 -- PHP-Version: 8.0.28
 
@@ -38,9 +38,9 @@ CREATE TABLE `benutzer` (
 --
 
 INSERT INTO `benutzer` (`id`, `benutzername`, `passwort`) VALUES
-(6, 'sebob2', '$2y$10$ni8ec3X.21kIvVgTJqkNv.ZfwcTEE.i6tZ6QQJp6xfN9HIkBBwzge'),
-(7, 'sebob', '$2y$10$f1RPLU45pTmAIC14yhqgBeloGytil5EIFU.hslVKVV8gfEp54TsNS'),
-(8, 'sebob3', '$2y$10$3E4MuhUVRpSmVSDQih8hXuodMpuk4TvPHgnyPryZzSRRrCmO94k1m'),
+(6, 'bernhard', '$2y$10$ni8ec3X.21kIvVgTJqkNv.ZfwcTEE.i6tZ6QQJp6xfN9HIkBBwzge'),
+(7, 'lukas', '$2y$10$f1RPLU45pTmAIC14yhqgBeloGytil5EIFU.hslVKVV8gfEp54TsNS'),
+(8, 'thomas', '$2y$10$3E4MuhUVRpSmVSDQih8hXuodMpuk4TvPHgnyPryZzSRRrCmO94k1m'),
 (9, 'root', '$2y$10$mDQqqR2nqkLjSpl.Dchpf.NhVel5b3YLpYz0i.LC0gahuBj8/HKA.');
 
 -- --------------------------------------------------------
@@ -60,18 +60,18 @@ CREATE TABLE `jobs` (
   `kategorie_id` int(10) UNSIGNED NOT NULL,
   `benutzer_id` int(10) UNSIGNED NOT NULL,
   `datum` datetime NOT NULL DEFAULT current_timestamp(),
-  `sichtbar` varchar(10) NOT NULL DEFAULT 'ja'
+  `sichtbar` varchar(10) NOT NULL DEFAULT 'ja',
+  `aenderungsdatum` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Daten für Tabelle `jobs`
 --
 
-INSERT INTO `jobs` (`id`, `titel`, `beschreibung`, `qualifikation`, `dienstort`, `stundenausmass`, `gehalt`, `kategorie_id`, `benutzer_id`, `datum`, `sichtbar`) VALUES
-(1, 'Webentwickler:in', 'Beschreibung', 'Studium oder FH', 'Salzburg', '40', '2800', 5, 7, '2024-05-04 00:00:00', 'ja'),
-(2, 'Vertriebsinnendienst', 'Rechnungen erstellen und Kontakt mit Außendienstmitarbeitern.', 'Ausbildung', 'Salzburg', '40', '2800', 1, 7, '2024-05-04 10:09:43', 'ja'),
-(3, 'xcvfhj', 'xcvghjfg', 'cv', 'xxckhhh', 'xcv', 'xcv', 1, 7, '2024-05-04 13:37:32', 'ja'),
-(5, 'Test', 'TEsts', 'fdsfk', 'fsdkjf', 'fwdjksf', 'fkjs', 2, 9, '2024-05-04 17:10:33', 'ja');
+INSERT INTO `jobs` (`id`, `titel`, `beschreibung`, `qualifikation`, `dienstort`, `stundenausmass`, `gehalt`, `kategorie_id`, `benutzer_id`, `datum`, `sichtbar`, `aenderungsdatum`) VALUES
+(1, 'Webentwickler:in', 'Beschreibung', 'Studium oder FH', 'Salzburg', '40', '2800', 5, 7, '2024-05-04 00:00:00', 'ja', '2024-05-24 13:54:32'),
+(2, 'Vertriebsinnendienst', 'Rechnungen erstellen und Kontakt mit Außendienstmitarbeitern.', 'Ausbildung', 'Salzburg', '40', '2800', 1, 7, '2024-05-04 10:09:43', 'nein', '2024-05-24 00:00:00'),
+(3, 'xcvfhj', 'xcvghjfg', 'cv', 'xxckhhh', 'xcv', 'xcv', 1, 7, '2024-05-04 13:37:32', 'ja', '2024-05-24 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -89,7 +89,7 @@ CREATE TABLE `kategorien` (
 --
 
 INSERT INTO `kategorien` (`id`, `kategorie`) VALUES
-(1, 'Bau / Baunebengewerbe / Holz / Gebäudetechnik'),
+(1, 'Bau'),
 (2, 'Bergbau / Rohstoffe / Glas / Keramik / Stein'),
 (3, 'Büro / Marketing / Finanz / Recht / Sicherheit'),
 (4, 'Chemie / Biotechnologie / Lebensmittel / Kunststoffe'),
@@ -103,7 +103,9 @@ INSERT INTO `kategorien` (`id`, `kategorie`) VALUES
 (12, 'Textil und Bekleidung / Mode / Leder'),
 (13, 'Tourismus / Gastgewerbe / Freizeit'),
 (14, 'Umwelt'),
-(15, 'Wissenschaft / Bildung / Forschung und Entwicklung');
+(15, 'Wissenschaft / Bildung / Forschung und Entwicklung'),
+(16, 'Webentwickler'),
+(17, 'Elektriker');
 
 --
 -- Indizes der exportierten Tabellen
@@ -150,7 +152,7 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT für Tabelle `kategorien`
 --
 ALTER TABLE `kategorien`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Constraints der exportierten Tabellen
