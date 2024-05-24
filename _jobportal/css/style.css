@@ -44,6 +44,12 @@ img {
     max-width: 1400px;
 }
 
+/* Navbar */
+
+.navbar {
+    background-color: white;
+}
+
 /* HERO */
 
 #hero {
@@ -51,10 +57,15 @@ img {
     background-position: center;
     background-size: cover;
     height: 190px;
+    padding-top: 40px;
 }
 
-.search-button-field {
+.search-field-button {
     width: 20%;
+}
+
+.search-field-button .search-button {
+    width: 100%;
 }
 
 .search-field-1,
@@ -106,6 +117,12 @@ img {
 
 #hero-small .input-group .search-field-2 #location-list .list-item p {
     color: white;
+}
+
+/* Content Element */
+
+.inserat-element {
+    background-color: gainsboro;
 }
 
 /* AKKORDION */

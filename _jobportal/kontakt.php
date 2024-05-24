@@ -1,6 +1,7 @@
 <?php include "kopf-frontend.php"; ?>
 
 <main>
+    <div class="inner-wrapper">
     <header class="container">
         <h1>Kontakt</h1>
     </header>
@@ -24,6 +25,7 @@
             <button type="submit" class="btn btn-primary">Nachricht senden</button>
         </form>
     </section>
+    </div>
 </main>
 
 <?php include "fuss.php"; ?>

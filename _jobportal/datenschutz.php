@@ -3,6 +3,9 @@ include "kopf-frontend.php";
 ?>
 
 <main>
+    <div class="inner-wrapper">
+
+   
 <header>
         <h1>Datenschutz</h1>
     </header>
@@ -15,6 +18,7 @@ include "kopf-frontend.php";
         <h2>Änderungen der Datenschutzrichtlinie</h2>
         <p>Hier können Sie angeben, dass Sie sich das Recht vorbehalten, diese Datenschutzrichtlinie zu aktualisieren oder zu ändern und wie Benutzer über solche Änderungen informiert werden.</p>
     </section>
+    </div>
 </main>
 
 <?php

@@ -69,13 +69,9 @@ if ($parameter[0] == "jobs") {
             "result" => array()
         );
 
-        //Rezeptedaten ermitteln
-        /*$sql_rezepte_id = escape($parameter[1]);
-        $result = query("SELECT * FROM rezepte WHERE id = '{$sql_rezepte_id}'");*/
-
         //Jobdaten ermitteln
         $sql_jobs_id = $db->escape($parameter[1]);
-        $result = $db->query("SELECT * FROM `jobs` WHERE id = '{$sql_jobs_id}'");
+        $result = $db->query("SELECT * FROM `jobs` WHERE id = '{$sql_jobs_id}' AND sichtbar = 'ja'");
 
         // Das Resultat in Kategorie reinspeichern
         $job = mysqli_fetch_assoc($result);
@@ -89,13 +85,6 @@ if ($parameter[0] == "jobs") {
         $ausgabe["result"] = $job;
 
 
-
-        //Benutzerdaten ermitteln und an die Ausgabe anhängen
-        $result = $db->query("SELECT id, benutzername FROM benutzer WHERE id = '{$job["benutzer_id"]}'");
-        
-        $ausgabe["benutzer"] = mysqli_fetch_assoc($result);
-
-
         echo json_encode($ausgabe); //Umwandlung eines Arrays in JSON
         exit;
 
@@ -106,7 +95,7 @@ if ($parameter[0] == "jobs") {
             "result" => array()
         );
 
-        $result = $db->query("SELECT * FROM `jobs`");
+        $result = $db->query("SELECT * FROM `jobs` WHERE sichtbar = 'ja'");
         while($row = mysqli_fetch_assoc($result)) {
             $ausgabe["result"][] = $row;
         }
@@ -135,7 +124,7 @@ if ($parameter[0] == "jobs") {
 
         //Kategoriendaten ermitteln
         $sql_kategorien_id = $db->escape($parameter[1]);
-        $result = $db->query("SELECT * FROM `kategorien` WHERE id = '{$sql_kategorien_id}'");
+        $result = $db->query("SELECT * FROM `kategorien` WHERE id = '{$sql_kategorien_id}' AND sichtbar = 'ja'");
 
 
 
@@ -165,7 +154,7 @@ if ($parameter[0] == "jobs") {
 
         $sql_kategorie_id = $db->escape($parameter[1]);
 
-        $result = $db->query("SELECT * FROM `jobs` WHERE kategorie_id = '{$sql_kategorie_id}'");
+        $result = $db->query("SELECT * FROM `jobs` WHERE kategorie_id = '{$sql_kategorie_id}' AND sichtbar = 'ja'");
 
         while($row = mysqli_fetch_assoc($result)) {
             $ausgabe["result"][] = $row;
@@ -200,7 +189,7 @@ if ($parameter[0] == "jobs") {
             "result" => array()
         );
         
-        $result = $db->query("SELECT dienstort FROM jobs ORDER BY id ASC");
+        $result = $db->query("SELECT dienstort FROM jobs WHERE sichtbar = 'ja' ORDER BY id ASC");
 
         $dienstorte = array(); // Array zum Speichern der bereits hinzugefügten Dienstorte
         

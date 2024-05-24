@@ -85,18 +85,30 @@ include "kopf-frontend.php";
                 </div>
             
             
-                <section class="inspiration-element my-5">
+                <section class="inspiration-element py-5 ">
                     <div class="inner-wrapper my-5">
                         <div class="row">
+                            
+
+                            <div class="col-sm-6">
                             <h2>Du brauchst Inspiration?</h2>
                             <p>
                                 Stöbere durch unsere Jobs und finde einen der zu
                                 dir passt!
                             </p>
+                                <a href="neue-jobs.php">Unsere neuesten Jobs</a>
+                                
+                            </div>
+                            <div class="col-sm-6">
+                            <img src="img/worker.jpg" alt="" />
+                                
+                            </div>
+
+
                         </div>
                     </div>
                 </section>
-                <section class="inserat-element my-5">
+                <section class="inserat-element py-5">
                     <div class="inner-wrapper my-5">
                         <div class="row">
                             <div class="col-sm-6">

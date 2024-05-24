@@ -3,6 +3,9 @@ include "kopf-frontend.php";
 ?>
 
 <main>
+    <div class="inner-wrapper">
+
+    
 <header>
         <h1>Über uns</h1>
     </header>
@@ -18,6 +21,7 @@ include "kopf-frontend.php";
         <p>Email: info@karriere-tipps.com<br>
            Telefon: +49 123 456789</p>
     </section>
+    </div>
 </main>
 
 <?php

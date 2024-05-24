@@ -13,12 +13,15 @@
         
 </head>
 <body>
-    
+
 <nav>
     <ul>
         <li><a href="index.php">Start</a></li>
         <li><a href="jobs_liste.php">Deine Stellenanzeigen</a></li>
-        <li><a href="job_erstellen.php">Neu erstellen</a></li>
+        <li><a href="job_erstellen.php">Neuen Job erstellen</a></li>
+        <li><a href="kategorien_liste.php">Alle Kategorien</a></li>
+        <li><a href="kategorie_erstellen.php">Neue Kategorie erstellen</a></li>
         <li>Eingeloggt als: <?php echo $_SESSION["benutzername"];?><br><a href="logout.php">Ausloggen</a> </li>
     </ul>
 </nav>
+

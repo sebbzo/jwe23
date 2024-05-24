@@ -3,6 +3,7 @@ include "kopf-frontend.php";
 ?>
 
 <main>
+<div class="inner-wrapper">
 <header>
         <h1>Impressum</h1>
     </header>
@@ -22,6 +23,7 @@ include "kopf-frontend.php";
         <h2>Urheberrecht:</h2>
         <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht.</p>
     </section>
+</div>
 </main>
 
 <?php

@@ -34,10 +34,13 @@ if (! empty($_POST)) {
         $sql_stundenaussmass = $db->escape($_POST["stunden"]);
         $sql_gehalt = $db->escape($_POST["gehalt"]);
         $sql_kategorie_id = $db->escape($_POST["kategorie"]);
+
+        // Aktuelles Datum herausfinden
+        $aktuelles_datum = date("Y-m-d H:i:s");
         
         // Einfügen in die Datenbank mit passender Benutzer ID
 
-        $insert_query = "UPDATE `jobs` SET `titel`='{$sql_titel}',`beschreibung`='{$sql_beschreibung}',`qualifikation`='{$sql_qualifikation}',`dienstort`='{$sql_dienstort}',`stundenausmass`='{$sql_stundenaussmass}',`gehalt`='{$sql_gehalt}',`kategorie_id`='{$sql_kategorie_id}' WHERE `id`='{$_GET["id"]}'";
+        $insert_query = "UPDATE `jobs` SET `titel`='{$sql_titel}',`beschreibung`='{$sql_beschreibung}',`qualifikation`='{$sql_qualifikation}',`dienstort`='{$sql_dienstort}',`stundenausmass`='{$sql_stundenaussmass}',`gehalt`='{$sql_gehalt}',`kategorie_id`='{$sql_kategorie_id}', `aenderungsdatum`='{$aktuelles_datum}' WHERE `id`='{$_GET["id"]}'";
 
         if ($db->query($insert_query)) {
             $erfolg = true;

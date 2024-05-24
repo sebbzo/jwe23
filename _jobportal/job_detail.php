@@ -24,7 +24,7 @@ $job_result = $db->query("
     SELECT jobs.titel, jobs.beschreibung, jobs.qualifikation, jobs.dienstort, jobs.stundenausmass, jobs.gehalt, jobs.datum, kategorien.kategorie 
     FROM jobs 
     JOIN kategorien ON jobs.kategorie_id = kategorien.id 
-    WHERE jobs.id = '{$job_id}'
+    WHERE jobs.id = '{$job_id}' AND jobs.sichtbar = 'ja'
 ");
 
 

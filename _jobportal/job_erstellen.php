@@ -114,27 +114,6 @@ if(!empty($validieren)) {
         </select>
     </div>
 
-
-    <!-- <div>
-        <label for="farbe">Farbe</label>
-        <input type="text" name="farbe" id="farbe" value="<?php
-            /*if (!empty($_POST["farbe"])) {
-                echo htmlspecialchars($_POST["farbe"]);
-            } else if (!empty($fahrzeug)) {
-                echo htmlspecialchars($fahrzeug->farbe);
-            }
-        ?>">
-    </div>
-    <div>
-        <label for="baujahr">Baujahr</label>
-        <input type="text" name="baujahr" id="baujahr" value="<?php
-            if (!empty($_POST["baujahr"])) {
-                echo htmlspecialchars($_POST["baujahr"]);
-            } else if (!empty($fahrzeug)) {
-                echo htmlspecialchars($fahrzeug->baujahr);
-            }*/
-        ?>">
-    </div>-->
     <div class="submit-button">
         <button type="submit">Job speichern</button>
     </div> 
