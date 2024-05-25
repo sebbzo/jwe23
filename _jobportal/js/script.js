@@ -3,8 +3,10 @@
 const jobUrl = "http://localhost/jwe23/_jobportal/api/categories/list";
 let jobList = [];
 
+// Daten in eine Liste hinzufügen
 let getJobsFromAPI = function () {
     $.getJSON(jobUrl, function (data) {
+        // An der Stelle Result im JSON-Objekt
         data.result.forEach((element) => {
             jobList.push(element.kategorie);
         });
@@ -14,9 +16,6 @@ let getJobsFromAPI = function () {
 };
 
 getJobsFromAPI();
-$("#load").on("click", function () {
-    console.log(jobList);
-});
 
 // Wenn ein job-item angeklickt wird, dann soll der Text in das Eingabefeld eingefügt werden
 $(document).ready(function () {
@@ -31,22 +30,22 @@ $(document).ready(function () {
 });
 
 // Die Kategorien ausgeben
-const prependNewProduct = function (index, job) {
+const prependJob = function (index, job) {
     $("#job-list").prepend(
         `<div class="list-item" data-product-id="${index}"><p>${job}</p></div>`
     );
 };
 
 // Hier werden die Kategorien ausgespielt
-const createProductList = function () {
-    $(jobList).each(prependNewProduct);
+const createJobList = function () {
+    $(jobList).each(prependJob);
 };
-createProductList();
+createJobList();
 
 // Funktion zur Anzeige der gefilterten Liste
 const showFilteredList = function (list) {
     $("#job-list").empty();
-    $(list).each(prependNewProduct);
+    $(list).each(prependJob);
 };
 
 // Die Filterfunktion

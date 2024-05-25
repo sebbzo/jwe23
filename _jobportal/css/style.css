@@ -20,7 +20,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Montserrat;
-    font-size: 14px;
+    font-size: 16px;
     color: var(--text-color);
 }
 
@@ -34,14 +34,6 @@ html * {
 
 img {
     max-width: 100%;
-}
-
-.inner-wrapper {
-    padding-left: 30px;
-    padding-right: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1400px;
 }
 
 .wrapper {
@@ -69,10 +61,20 @@ nav a:hover, footer a:hover {
     color: var(--primary) !important;
 }
 
+/* Accordion */
+
+.accordion-button {
+    color: var(--dark-brown) !important;
+}
+
 /* Navbar */
 
 .navbar {
     background-color: white;
+}
+
+#logo a img {
+    width: 150px;
 }
 
 /* HERO */
@@ -85,24 +87,12 @@ nav a:hover, footer a:hover {
     padding-top: 40px;
 }
 
-.search-field-button {
-    width: 20%;
-}
-
 .search-field-button .search-button {
     width: 100%;
 }
 
-.search-field-1,
-.search-field-2 {
-    width: 40%;
-}
-
 /* SUCHFUNKTION */
 
-.input-group .search-field-1 #job-list {
-    height: 200px;
-}
 #hero .input-group .search-field-1 #job-list .list-item {
     background: white;
 }
@@ -113,9 +103,6 @@ nav a:hover, footer a:hover {
     cursor: pointer;
 }
 
-.input-group .search-field-2 #location-list {
-    height: 200px;
-}
 .input-group .search-field-2 #location-list .list-item {
     background: white;
 }
@@ -150,18 +137,18 @@ nav a:hover, footer a:hover {
     background-color: #fff !important;
 }
 
-@media (max-width: 1023px) {
-    .mobile-width {
-        max-width: 500px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-
 /* TABLET */
 @media (min-width: 1024px) {
-    /* HERO */
 
+    .inner-wrapper {
+        padding-left: 30px;
+        padding-right: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1400px;
+    }
+
+    /* HERO */
     #hero {
         height: 352px;
     }

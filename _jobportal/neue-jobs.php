@@ -28,7 +28,7 @@ if ($ergebnis_jobs->num_rows == 0) { // Überprüfen, ob Ergebnisse vorhanden si
         echo "<div class='card mb-3'>";
         echo "<div class='card-body'>";
         echo "<h3 class='card-title'>" . htmlspecialchars($row["titel"]) . "</h3>"; // Titel des Jobs
-        echo "<p class='card-subtitle'>" . htmlspecialchars($row["dienstort"]) . "</p>"; // Dienstort des Jobs
+        echo "<i class='card-subtitle'>" . htmlspecialchars($row["dienstort"]) . "</i>"; // Dienstort des Jobs
         echo "<p class='card-text'>" . htmlspecialchars($row["beschreibung"]) . "</p>"; // Beschreibung des Jobs
         echo "<a href='job_detail.php?id={$job_id}' class='btn btn-primary'>Mehr erfahren</a>"; // Link zum Job-Detail
         echo "</div></div></div>";

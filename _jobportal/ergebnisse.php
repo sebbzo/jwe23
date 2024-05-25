@@ -45,7 +45,7 @@ $searchLocationPlaceholder = isset($_SESSION['search-location']) ? htmlspecialch
         <!-- SUCHFORMULAR -->
         <form action="home.php" method="post" class="my-5">
                 <div class="input-group">
-                    <div class="search-field-1">
+                    <div class="search-field-1 col-md-5">
                         <input
                             type="text"
                             class="form-control"
@@ -60,7 +60,7 @@ $searchLocationPlaceholder = isset($_SESSION['search-location']) ? htmlspecialch
                             <!-- Hier kommt dynamisches HTML -->
                         </div>
                     </div>
-                    <div class="search-field-2">
+                    <div class="search-field-2 col-md-5">
                         <input
                             type="text"
                             class="form-control"
@@ -76,7 +76,7 @@ $searchLocationPlaceholder = isset($_SESSION['search-location']) ? htmlspecialch
                             <!-- Hier kommt dynamisches HTML -->
                         </div>
                     </div>
-                    <div class="search-field-button">
+                    <div class="search-field-button col-md-2">
                         <button
                             class="btn btn-primary search-button"
                             type="submit"
@@ -125,7 +125,7 @@ if ($ergebnis_jobs->num_rows == 0) {
         echo "<div class='card m-2'>";
         echo "<div class='card-body'>";
         echo "<h3 class='card-title'>" . htmlspecialchars($row["titel"]) . "</h3>";
-        echo "<p class='card-text'>" . htmlspecialchars($row["dienstort"]) . "</p>";
+        echo "<i class='card-text'>" . htmlspecialchars($row["dienstort"]) . "</i>";
         echo "<p class='card-text'>" . htmlspecialchars($row["beschreibung"]) . "</p>";
         echo "<p class='card-text'><strong>Kategorie:</strong> " . htmlspecialchars($row["kategorie"]) . "</p>"; // Ausgabe der Kategorie
         echo "<a href='job_detail.php?id={$job_id}' class='btn btn-primary'>Mehr erfahren</a>"; // Link zum Job-Detail

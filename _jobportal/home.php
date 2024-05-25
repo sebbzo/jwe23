@@ -4,7 +4,7 @@ include "kopf-frontend.php";
 <main>
     <div id="hero" class="container">
         <div class="inner-wrapper">
-            <h1>Jobportal</h1>
+            <h1 class="text-center">Jobportal</h1>
 
             <!-- SUCHFUNKTION -->
             <?php
@@ -39,7 +39,7 @@ include "kopf-frontend.php";
             <!-- SUCHFORMULAR -->
         <form action="home.php" method="post" class="mt-5">
                 <div class="input-group">
-                    <div class="search-field-1">
+                    <div class="search-field-1 col-md-5">
                         <input
                             type="text"
                             class="form-control"
@@ -53,7 +53,7 @@ include "kopf-frontend.php";
                             <!-- Hier kommt dynamisches HTML -->
                         </div>
                     </div>
-                    <div class="search-field-2">
+                    <div class="search-field-2 col-md-5">
                         <input
                             type="text"
                             class="form-control"
@@ -68,7 +68,7 @@ include "kopf-frontend.php";
                             <!-- Hier kommt dynamisches HTML -->
                         </div>
                     </div>
-                    <div class="search-field-button">
+                    <div class="search-field-button col-md-2">
                         <button
                             class="btn btn-primary search-button"
                             type="submit"
@@ -86,7 +86,7 @@ include "kopf-frontend.php";
     <section class="inspiration-element py-5">
         <div class="inner-wrapper my-5">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-6 mb-5">
                     <h2>Du brauchst Inspiration?</h2>
                     <p>
                         Stöbere durch unsere Jobs und finde einen, der zu dir passt!
@@ -102,7 +102,7 @@ include "kopf-frontend.php";
     <section class="inserat-element py-5">
         <div class="inner-wrapper my-5">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-6 mb-5">
                     <img src="img/happy-workers.jpg" alt="" />
                 </div>
                 <div class="col-sm-6">

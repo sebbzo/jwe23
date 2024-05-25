@@ -7,7 +7,7 @@ use WIFI\Jobportal\Fdb\Mysql;
 $db = Mysql::getInstanz();
 
 echo "<main>
-<div class='container'> <!-- Container zur Begrenzung des Inhalts -->
+<div class='container'>
     <div class='inner-wrapper'>
         <h1>Kategorien entdecken</h1>";
 
@@ -17,6 +17,7 @@ $ergebnis_kategorien = $db->query("SELECT id, kategorie FROM kategorien");
 if ($ergebnis_kategorien->num_rows == 0) {
     echo "<p>Es wurden leider keine Kategorien gefunden!</p>";
 } else {
+    // first für collapse beim ersten Element
     $first = true;
     while ($kategorie = $ergebnis_kategorien->fetch_assoc()) {
         $kategorie_id = $kategorie['id'];
@@ -42,7 +43,7 @@ if ($ergebnis_kategorien->num_rows == 0) {
                 echo "<div class='card m-2'>";
                 echo "<div class='card-body'>";
                 echo "<h3 class='card-title'>" . htmlspecialchars($row["titel"]) . "</h3>";
-                echo "<p class='card-subtitle'>" . htmlspecialchars($row["dienstort"]) . "</p>";
+                echo "<i class='card-subtitle'>" . htmlspecialchars($row["dienstort"]) . "</i>";
                 echo "<p class='card-text'>" . htmlspecialchars($row["beschreibung"]) . "</p>";
                 echo "<a href='job_detail.php?id={$job_id}' class='btn btn-primary'>Mehr erfahren</a>"; // Link zum Job-Detail
                 echo "</div></div>";
