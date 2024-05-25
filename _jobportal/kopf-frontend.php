@@ -45,7 +45,7 @@
                 </ul>
                 <!-- Inserat schalten -->
                 <span class="navbar-text">
-                    <a href="login.php">Inserat schalten</a>
+                    <a href="login.php">Zum Login-Bereich</a>
                 </span>
             </div>
         </div>
